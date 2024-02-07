@@ -6,12 +6,14 @@ import App from './App';
 import './index.css';
 
 import csrfFetch, {restoreCSRF} from './store/csrf';
+import * as sessionActions from './store/session';
 
 const store = configureStore();
 
 if (import.meta.env.MODE !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
+  window.sessionActions = sessionActions;
 }
 
 restoreCSRF().then(ReactDOM.createRoot(document.getElementById('root')).render(
