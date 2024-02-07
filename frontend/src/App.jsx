@@ -29,10 +29,6 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Splash />
-      },
-      {
-        path: '/login',
-        element: <LoginForm />
       }
     ]
   }

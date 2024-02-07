@@ -49,7 +49,7 @@ const sessionReducer = (state = initialState, action) => {
             return nextState;
         default:
             return state;
-    };
+    }
 }
 
 export default sessionReducer;

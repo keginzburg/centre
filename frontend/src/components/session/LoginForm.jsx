@@ -13,7 +13,7 @@ function LoginForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (currentUser) return <Navigate to="/" replace={true} />;
+    // if (currentUser) return <Navigate to="/" replace={true} />;
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -36,34 +36,30 @@ function LoginForm() {
     // }
 
     return (
-        <>
+        <div id="login-form">
             <h1>Sign in with email</h1>
-            <p>Enter the email address and password associated with you account.</p>
+            <p>Enter the email address and password associated with your account.</p>
 
-            <label htmlFor="email">Your email
-                <input
+            <label htmlFor="email">Your email</label>
+            <input
                     type="text"
                     id="email"
                     onChange={e => setEmail(e.target.value)}
                     value={email}
-                    required
-                />
-            </label>
+            />
 
-            <label htmlFor="password">Your password
-                <input
+            <label htmlFor="password">Your password</label>
+            <input
                     type="password"
                     id="password"
                     onChange={e => setPassword(e.target.value)}
                     value={password}
-                    required
-                />
-            </label>
+            />
 
             <button type="submit">Sign in</button>
 
             <p>No account? <button>Create one</button></p>
-        </>
+        </div>
     )
 }
 

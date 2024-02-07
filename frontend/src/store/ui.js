@@ -38,7 +38,7 @@ const uiReducer = (state = initialState, action) => {
             return { modal: null };
         default:
             return state;
-    };
+    }
 }
 
 export default uiReducer;
