@@ -8,7 +8,15 @@ class Api::UsersController < ApplicationController
         login!(@user)
         render 'api/users/show'
       else
-        render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+        errors = { email: nil, name: nil, password: nil }
+       
+        @user.errors.full_messages.each do |error|
+          errors[:email] = error if error.include?("Email")
+          errors[:name] = error if error.include?("Name")
+          errors[:password] = error if error.include?("Password")          
+        end
+
+        render json: { errors: errors }, status: :unprocessable_entity
       end
     end
   

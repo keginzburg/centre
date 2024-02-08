@@ -9,13 +9,14 @@ import { MdErrorOutline } from "react-icons/md";
 
 import { PulseLoader } from 'react-spinners';
 
-import './LoginForm.css';
+import './SignupForm.css';
 
-function LoginForm() {
+function SignupForm() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
 
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
 
@@ -24,27 +25,26 @@ function LoginForm() {
     if (currentUser) return <Navigate to="/feed" replace={true} />;
 
     const validate = () => {
-        let errors = { "email": null, "password": null, "credentials": null };
+        let errors = { "email": null, "name": null, "password": null };
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (email.length === 0) errors["email"] = "Please enter a valid email address.";
         else if (regex.test(email) === false) errors["email"] = "Please enter a valid email address.";
+        if (name.length === 0) errors["name"] = "Please enter a valid name.";
         if (password.length < 6 || password.length > 40) errors["password"] = "Password must be between 6 to 40 characters.";
         return errors;
     }
 
-    const renderFrontendError = (field) => {
+    const renderError = (field) => {
         switch (field) {
             case 'email':
                 return errors["email"] ? <span>{errors["email"]}</span> : null;
             case 'password':
                 return errors["password"] ? <span>{errors["password"]}</span> : null;
+            case 'name':
+                return errors["name"] ? <span>{errors["name"]}</span> : null;
             default:
                 return null;
         }
-    }
-
-    const renderBackendError = () => {
-        if (errors["credentials"]) return <span>{errors["credentials"]} <MdErrorOutline id="credential-error-icon"/></span>;
     }
 
     const handleSubmit = e => {
@@ -58,7 +58,7 @@ function LoginForm() {
         setLoading(true);
 
         setErrors({});
-        return dispatch(sessionActions.login({email, password}))
+        return dispatch(sessionActions.signup({email, name, password}))
             .catch(async (err) => {
                 let data;
                 try {
@@ -68,8 +68,8 @@ function LoginForm() {
                 }
                 if (data?.errors) setErrors(data.errors);
                 // else if (data) setErrors([data]);
-                console.error(err.statusText);
                 // else setErrors([res.statusText]);
+                console.error(err.statusText)
             })
             .then(() => setLoading(false));
     };
@@ -95,7 +95,7 @@ function LoginForm() {
     }
 
     if (loading) return (
-        <form id="login-form" onSubmit={handleSubmit}>
+        <form id="signup-form">
             <PulseLoader
                 color="#191919"
                 margin={4}
@@ -106,10 +106,9 @@ function LoginForm() {
     )
 
     return (
-        <form id="login-form" onSubmit={handleSubmit}>
-            <h1>Sign in</h1>
-            <p>Enter the email address and password associated with your account.</p>
-            {renderBackendError()}
+        <form id="signup-form" onSubmit={handleSubmit}>
+            <h1>Sign up</h1>
+            <p>Enter your email address, name, and password to create an account.</p>
 
             <label htmlFor="email" className={errors["email"] ? 'label-error' : null}>
                 Your email
@@ -122,7 +121,20 @@ function LoginForm() {
                     value={email}
                     className={errors["email"] ? 'input-error' : null}
             />
-            {renderFrontendError("email")}
+            {renderError("email")}
+
+            <label htmlFor="name" className={errors["name"] ? 'label-error' : null}>
+                Your name
+                {errors["name"] ? <MdErrorOutline id="name-error-icon"/> : null}
+            </label>
+            <input
+                    type="text"
+                    id="name"
+                    onChange={e => setName(e.target.value)}
+                    value={name}
+                    className={errors["name"] ? 'input-error' : null}
+            />
+            {renderError("name")}
 
             <label htmlFor="password" className={errors["password"] ? 'label-error' : null}>
                 Your password
@@ -135,15 +147,14 @@ function LoginForm() {
                     value={password}
                     className={errors["password"] ? 'input-error' : null}
             />
-            {renderFrontendError("password")}
+            {renderError("password")}
 
-            <button disabled={loading} type="submit">Sign in</button>
-
+            <button disabled={loading} type="submit">Sign up</button>
             <button disabled={loading} id="demo" onClick={handleDemo}>Demo</button>
 
-            <p>No account? <button onClick={() => { dispatch(setModal("signup-no-animate")) }}>Create one</button></p>
+            <p>Already have an account? <button onClick={() => {dispatch(setModal('login-no-animate'))}}>Sign in</button></p>
         </form>
     )
 }
 
-export default LoginForm;
+export default SignupForm;

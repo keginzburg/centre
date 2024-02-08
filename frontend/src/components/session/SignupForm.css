@@ -1,4 +1,4 @@
-#login-form {
+#signup-form {
     width: 360px;
     padding: 44px 56px;
     display: flex;
@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-#login-form h1 {
+#signup-form h1 {
     letter-spacing: 0.01em;
     line-height: 32px;
     font-size: 28px;
@@ -15,7 +15,7 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-#login-form p {
+#signup-form p {
     letter-spacing: 0.01em;
     font-size: 16px;
     line-height: 24px;
@@ -24,7 +24,7 @@
     margin-top: 30px;
 }
 
-#login-form label {
+#signup-form label {
     position: relative;
     letter-spacing: 0.01em;
     font-size: 13px;
@@ -34,15 +34,15 @@
     margin-bottom: 12px;
 }
 
-#login-form label.label-error {
+#signup-form label.label-error {
     color: rgb(201, 74, 74);
 }
 
-#login-form input.input-error {
+#signup-form input.input-error {
     border-bottom: 1px solid transparent;
 }
 
-#login-form span {
+#signup-form span {
     letter-spacing: 0.01em;
     font-size: 13px;
     color: rgb(201, 74, 74);
@@ -50,17 +50,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#credential-error-icon {
-    position: relative;
-    top: 3px;
-    color: rgb(201, 74, 74);
-    font-size: 16px;
-    animation-name: shake;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
-}
-
-#pass-error-icon, #email-error-icon {
+#pass-error-icon, #email-error-icon, #name-error-icon {
     color: rgb(201, 74, 74);
     position: absolute;
     top: 30px;
@@ -79,7 +69,7 @@
     100% { transform: translateX(0) }
 }
 
-#login-form input {
+#signup-form input {
     outline: none;
     background: transparent;
     width: 270px;
@@ -94,7 +84,7 @@
     margin-bottom: 25px;
 }
 
-#login-form button[type="submit"], #login-form button#demo {
+#signup-form button[type="submit"], #signup-form button#demo {
     width: 226px;
     text-align: center;
     text-decoration: none;
@@ -112,25 +102,25 @@
     transition: 1s;
 }
 
-#login-form button#demo {
+#signup-form button#demo {
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-#login-form button[type="submit"]:hover {
+#signup-form button[type="submit"]:hover {
     border: 1px solid black;
     background-color: black;
     cursor: pointer;
 }
 
-#login-form button#demo:hover {
+#signup-form button#demo:hover {
     color: black;
     border: 1px solid #FFC017;
     background-color: #FFC017;
     cursor: pointer;
 }
 
-#login-form p button {
+#signup-form p button {
     color: #1A8917;
     letter-spacing: 0.01em;
     line-height: 24px;
@@ -142,7 +132,7 @@
     padding: 0;
 }
 
-#login-form p button:hover {
+#signup-form p button:hover {
     cursor: pointer;
 }
 

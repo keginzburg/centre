@@ -3,8 +3,14 @@ import { thunk } from 'redux-thunk';
 
 import sessionReducer from './session';
 import uiReducer from './ui';
+import usersReducer from './user';
+
+const entitiesReducer = combineReducers({
+    users: usersReducer
+});
 
 const rootReducer = combineReducers({
+    entities: entitiesReducer,
     session: sessionReducer,
     ui: uiReducer
 });

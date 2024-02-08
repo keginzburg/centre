@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import * as sessionActions from "./store/session";
 import Splash from "./components/splash/Splash";
-import LoginForm from "./components/session/LoginForm";
+import Feed from "./components/feed/Feed";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Splash />
+      },
+      {
+        path: '/feed',
+        element: <Feed />
       }
     ]
   }

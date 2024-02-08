@@ -17,12 +17,36 @@ export const removeCurrentUser = () => {
 }
 
 export const login = ({ email, password}) => async dispatch => {
+    try {
+        const response = await csrfFetch("/api/session", {
+            method: "POST",
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        dispatch(setCurrentUser(data.user));
+    } catch (err) {
+        throw err;
+    }
+}
+
+export const signup = ({ email, name, password}) => async dispatch => {
+    try {
+        const response = await csrfFetch("/api/users", {
+            method: "POST",
+            body: JSON.stringify({ email, name, password })
+        });
+        const data = await response.json();
+        dispatch(setCurrentUser(data.user));
+    } catch (err) {
+        throw err;
+    }
+}
+
+export const logout = () => async dispatch => {
     const response = await csrfFetch("/api/session", {
-        method: "POST",
-        body: JSON.stringify({ email, password })
+        method: "DELETE"
     });
-    const data = await response.json();
-    dispatch(setCurrentUser(data.user));
+    dispatch(removeCurrentUser());
     return response;
 }
 

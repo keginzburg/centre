@@ -6,7 +6,7 @@ import { setModal } from "../../store/ui";
 
 function SplashNav() {
     const dispatch = useDispatch();
-
+    
     return (
         <>
             <div id="nav">
