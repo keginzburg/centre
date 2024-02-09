@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import * as sessionActions from "./store/session";
 import Splash from "./components/splash/Splash";
 import Feed from "./components/feed/Feed";
+import ArticleForm from "./components/articles/forms/ArticleForm";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/feed',
         element: <Feed />
+      },
+      {
+        path: '/new-story',
+        element: <ArticleForm />
       }
     ]
   }

@@ -2,27 +2,25 @@ import logo from "./logo-128.png";
 
 import { Link } from "react-router-dom";
 
-import ProfileButton from "../profile/ProfileButton";
+import ProfileButton from "../../profile/ProfileButton";
 
-import { PiNotePencilThin } from "react-icons/pi";
 import { CiBellOn } from "react-icons/ci";
 
-import './FeedNav.css';
+import './FormNav.css';
 
-function FeedNav() {
+function FormNav() {
     return (
         <>
-            <div id="feed-nav">
+            <div id="form-nav">
                 <div id="logo">
                     <Link to="/feed">
                         <img src={logo} alt="centre logo" />
                     </Link>
                 </div>
-                <div id="feed-tools">
-                    <Link to="/new-story" id="write">
-                        <PiNotePencilThin id="write-icon" />
-                        <span>Write</span>
-                    </Link>
+                <div id="article-tools">
+                    <button id="publish">
+                        <span>Publish</span>
+                    </button>
                     <Link to="/feed" id="notifications"><CiBellOn id="notifications-icon" /></Link>
                     <ProfileButton />
                 </div>
@@ -31,4 +29,4 @@ function FeedNav() {
     )
 }
 
-export default FeedNav;
+export default FormNav;

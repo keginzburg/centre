@@ -1,0 +1,31 @@
+#article-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+
+    width: 100vw;
+    padding: 100px 0 0;
+
+}
+
+#article-form #title, #body {
+    width: 55vw;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+#title {
+    font-size: 44px;
+}
+
+#body {
+    font-size: 22px;
+}
+
+#title::placeholder {
+    color: #b3b3b1;
+}
+#body::placeholder {
+    color: #b3b3b1;
+}
