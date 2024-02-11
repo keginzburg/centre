@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+
 import FormNav from './FormNav';
+
+import { CiCirclePlus } from "react-icons/ci";
+import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 
 import './ArticleForm.css';
 
@@ -11,11 +15,26 @@ function ArticleForm() {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
+    const [add, setAdd] = useState(false);
 
     if (!currentUser) return <Navigate to="/" replace="true"/>;
 
     const handleSubmit = () => {
 
+    }
+
+    const autoGrow = e => {
+        console.log("growing");
+        if (e.target.value === "") {
+            // console.log("nothing");
+            e.target.style.height = "51px";
+        } else {
+            // debugger
+            console.log(e.target.scrollHeight);
+            e.target.style.height = "auto";
+            e.target.style.height = (e.target.scrollHeight) + "px";
+            // e.target.innerHTML = e.target.value + '\n';
+        }
     }
 
     return (
@@ -30,13 +49,23 @@ function ArticleForm() {
                     onChange={e => setTitle(e.target.value)}
                 />
 
-                <input
+                <textarea
                     type="text"
                     value={body}
+                    // contentEditable
+                    // role='textbox'
+                    onInput={autoGrow}
                     id="body"
                     placeholder='Tell your story...'
                     onChange={e => setBody(e.target.value)}
                 />
+
+                <div id="additional">
+                    <CiCirclePlus id="add-button" className={add ? "add" : null} onClick={() => setAdd(prev => !prev)}/>
+                    {add && <div id="photo-upload-button">
+                        <MdOutlinePhotoSizeSelectActual id="photo-upload-icon"/>
+                    </div>}
+                </div>
             </form>
         </>
     )
