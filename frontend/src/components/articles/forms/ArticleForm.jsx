@@ -19,21 +19,18 @@ function ArticleForm() {
 
     if (!currentUser) return <Navigate to="/" replace="true"/>;
 
-    const handleSubmit = () => {
+    // const handleSubmit = () => {
 
-    }
+    // }
 
     const autoGrow = e => {
         console.log("growing");
         if (e.target.value === "") {
-            // console.log("nothing");
             e.target.style.height = "51px";
         } else {
-            // debugger
             console.log(e.target.scrollHeight);
             e.target.style.height = "auto";
             e.target.style.height = (e.target.scrollHeight) + "px";
-            // e.target.innerHTML = e.target.value + '\n';
         }
     }
 
