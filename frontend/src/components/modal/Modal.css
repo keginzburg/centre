@@ -1,0 +1,104 @@
+#modal-container {
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    scroll-behavior: none;
+
+    z-index: 800;
+
+    background-color: rgba(255, 255, 255, 0.95);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#modal-container.modal-animate1 {
+    animation-name: modal-fadein;
+    animation-duration: 0.5s;
+}
+
+@keyframes modal-fadein {
+    from {
+        background-color: transparent;
+    }
+
+    to {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+}
+
+#modal-container.modal-animate2 {
+    animation-name: modal-fadeout;
+    animation-duration: 0.8s;
+}
+
+@keyframes modal-fadeout {
+    from {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    to {
+        background-color: transparent;
+    }
+}
+
+#modal {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: white;
+    width: 678px;
+    min-height: 695px;
+
+    box-shadow: rgba(0,0,0,0.15) 0px 2px 10px;
+}
+
+#modal.modal-animate1 {
+    animation-name: modal-grow;
+    animation-duration: 0.5s;
+}
+
+@keyframes modal-grow {
+    from {
+        transform: scale(0.2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+#modal.modal-animate2 {
+    animation-name: modal-shrink;
+    animation-duration: 0.5s;
+}
+
+@keyframes modal-shrink {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0);
+    }
+
+}
+
+#modal-exit {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: gray;
+    cursor: pointer;
+    transform: scaleX(1.15);
+}
+
+#modal-exit:hover {
+    color: rgba(25,25,25,1);
+}

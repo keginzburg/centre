@@ -1,0 +1,109 @@
+
+#dropdown-menu-pointer {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    transform: rotate(45deg);
+    top:40px;
+    right: 14px;
+
+    border: 1px solid #F2F2F2;
+    clip: rect(0 15px 15px -4px);
+    /* background-color: rgba(255,255,255,1); */
+    background-color: rgba(255,255,255,1);
+    /* box-shadow: rgba(0,0,0,0.15) -10px -10px 18px; */
+    z-index: 801;
+}
+
+#dropdown-user-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+#dropdown-user-info #user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 22px 14px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+#dropdown-user-info #user-info #user-info-icon {
+    font-size: 40px;
+}
+
+#dropdown-user-info #user-info #user-info-details {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 8px;
+}
+
+#dropdown-nav-links {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+#dropdown-nav-links #profile {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 8px 22px 14px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+#profile #profile-icon {
+    font-size: 28px;
+}
+
+#profile > span {
+    margin-left: 10px;
+}
+
+#profile > span#no-icon {
+    padding: 8px 0;
+}
+
+#dropdown-personal-links {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #F2F2F2;
+    padding: 12px 0;
+}
+
+#dropdown-personal-links a {
+    padding: 6px 22px 6px;
+}
+
+#dropdown-auth {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0 0;
+}
+
+#dropdown-auth button {
+    padding: 6px 22px 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
+}
+
+#dropdown-auth button {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#dropdown-menu #dropdown-auth button:hover span:first-child {
+    color: black;
+}

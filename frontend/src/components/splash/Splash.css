@@ -1,0 +1,275 @@
+#nav img {
+    height: 46px;
+    width: auto;
+}
+
+#nav h1 {
+    font-family: "GT Super Text Medium";
+    font-weight: 600;
+    font-size: 32px;
+}
+
+#nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFC017;
+    padding: 18px 10vw;
+    border-bottom: 1px solid #242424;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+#logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#logo:hover {
+    cursor: pointer;
+}
+
+#logo img {
+    margin-right: 4px;
+}
+
+#auth-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#auth-links a {
+    color: black;
+    background-color: transparent;
+    border: transparent;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+#auth-links button {
+    color: black;
+    background-color: transparent;
+    border: transparent;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+#auth-links button:last-child {
+    margin-left: 12px;
+    color: white;
+    background-color: rgba(25,25,25,1);
+    border: 1px solid rgba(25,25,25,1);
+    border-radius: 99em;
+    transition: 0.5s
+}
+
+#auth-links button:last-child:hover {
+    background-color: black;
+    border: 1px solid black;
+}
+
+#splash-main {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFC017;
+    padding: 36px 10vw;
+    border-bottom: 1px solid #242424;
+}
+
+#splash-main h1 {
+    letter-spacing: -0.05em;
+    line-height: 95px;
+    font-size: 106px;
+    font-family: "GT Super Text Regular";
+    font-weight: 200;
+    margin-top: 38px;
+    margin-bottom: 26px;
+}
+
+#splash-main h2 {
+    font-size: 24px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 200;
+    width: 450px;
+    margin-bottom: 48px;
+
+}
+
+#splash-main button {
+    color: white;
+    background-color: black;
+    border: transparent;
+    width: 213px;
+    padding: 8px 20px;
+    font-size: 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 20px;
+    border: 1px solid black;
+    border-radius: 99em;
+    margin-bottom: 60px;
+}
+
+#splash-main button:hover {
+    cursor: pointer;
+}
+
+#splash-graphic {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 20px;
+}
+
+#trending-main {
+    /* display: flex; */
+    /* flex-direction: column; */
+    padding: 18px 10vw;
+    border-bottom: 1px solid #F2F2F2;
+
+}
+
+#trending-header {
+    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+#trending-header img {
+    width: 18px;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 100%;
+    margin-right: 12px;
+}
+
+#trending-index {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 450px) {
+    #trending-index-item {
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+        margin: 20px 0;
+    }
+}
+@media screen and (min-width: 450px) and (max-width: 900px) {
+    #trending-index-item {
+        width: 40vw;
+        display: flex;
+        flex-direction: row;
+        margin: 20px 0;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #trending-index-item {
+        width: 26vw;
+        display: flex;
+        flex-direction: row;
+        margin: 20px 0;
+    }
+}
+
+#trending-number {
+    width: 40px;
+    position: relative;
+    margin-right: 16px;
+    top: -10px;
+}
+
+#trending-number p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    color: #F2F2F2;
+    line-height: 38px;
+    letter-spacing: -0.014em;
+}
+
+#trending-article-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#trending-article-user img {
+    width: 20px;
+    height: auto;
+}
+
+#trending-article-user p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    line-height: 16px;
+    max-height: 16px;
+    color: #242424;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+#trending-article-title {
+    margin-top: 6px;
+}
+
+#trending-article-title h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    max-height: 80px;
+    font-weight: 700;
+    color: #242424;
+}
+
+#trending-article-info {
+    margin-top: 6px;
+}
+
+#trending-article-info p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    font-weight: 200;
+    color: #6B6B6B;
+}
+
+#splash-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 18px 10vw;
+}
+
+#splash-footer a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6B6B6B;
+    font-weight: 400;
+    margin-right: 26px;
+    margin-bottom: 8px;
+    text-decoration: none;
+}
