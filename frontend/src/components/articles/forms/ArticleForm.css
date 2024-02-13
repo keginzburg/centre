@@ -1,3 +1,4 @@
+
 #article-form {
     display: flex;
     flex-direction: column;
@@ -66,7 +67,7 @@
     transform: rotate(45deg);
 }
 
-#article-form #additional #photo-upload-button {
+#article-form #additional #photo-upload-button label {
     width: fit-content;
     height: fit-content;
     border: 1.5px solid rgb(83,161,77);

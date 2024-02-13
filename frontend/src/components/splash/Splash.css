@@ -166,6 +166,13 @@
     flex-wrap: wrap;
 }
 
+#trending-index.trending-index-loader {
+    display: flex;
+    padding: 110px;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 450px) {
     #trending-index-item {
         width: 80vw;
@@ -215,6 +222,7 @@
 
 #trending-article-user img {
     width: 20px;
+    border-radius: 99em;
     height: auto;
 }
 

@@ -7,3 +7,29 @@ export function convertEmailToLocal(email) {
     const [local] = email.split("@");
     return local;
 }
+
+export function abbreviateBody(body) {
+    const bodyArr = body.split(" ");
+    if (bodyArr.length <= 24) return body;
+    const abbreviatedArr = bodyArr.slice(0, 25);
+    return abbreviatedArr.join(" ") + "...";
+}
+
+export function abbreviateDate(date) {
+    const currentYear = new Date().getFullYear();
+    let dateArr = date.split(",")
+    if (dateArr[1] === " " + currentYear.toString()) {
+        return dateArr[0];
+    } else {
+        return date;
+    }
+}
+
+export const autoGrow = e => {
+    if (e.target.value === "") {
+        e.target.style.height = "51px";
+    } else {
+        e.target.style.height = "auto";
+        e.target.style.height = (e.target.scrollHeight) + "px";
+    }
+}

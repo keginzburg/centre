@@ -58,7 +58,7 @@ export const restoreSession = () => async dispatch => {
     return response;
 }
 
-const initialState = { user: null }
+const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
     Object.freeze(state);

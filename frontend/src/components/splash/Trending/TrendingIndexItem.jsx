@@ -1,22 +1,23 @@
-import profile from "./profile-icon.png";
+import { Link } from "react-router-dom";
 
-function TrendingIndexItem({datum}) {
-
+function TrendingIndexItem({article, author, num}) {
     return (
         <div id="trending-index-item">
             <div id="trending-number">
-                <p>0{datum}</p>
+                <p>0{num}</p>
             </div>
             <div id="trending-article">
-                <div id="trending-article-user">
-                    <img src={profile} alt="profile" />
-                    <p>Name Name</p>
-                </div>
+                <Link id="trending-article-user" style={{textDecoration: "none"}} >
+                    <img src={author.photoUrl} alt="profile" />
+                    <p>{author.name}</p>
+                </Link>
                 <div id="trending-article-title">
-                    <h1>5 Things I Learned about Leadership from the Death and Rebirth of Microsoft</h1>
+                    <Link to={`/articles/${article.id}`} style={{textDecoration: "none"}}>
+                        <h1>{article.title}</h1>
+                    </Link>
                 </div>
                 <div id="trending-article-info">
-                    <p>Feb 5 · 10 min read </p>
+                    <p>{article.updatedAt.split(",")[0]} · {article.minRead} min read </p>
                 </div>
             </div>
         </div>

@@ -35,6 +35,11 @@
     font-size: 40px;
 }
 
+#dropdown-user-info #user-info #profile-photo-icon {
+    font-size: 40px;
+    border-radius: 99em;
+}
+
 #dropdown-user-info #user-info #user-info-details {
     display: flex;
     flex-direction: column;
@@ -55,6 +60,12 @@
     padding: 8px 22px 14px;
     font-size: 14px;
     line-height: 20px;
+}
+
+#profile #profile-photo {
+    width: 28px;
+    height: auto;
+    border-radius: 99em;
 }
 
 #profile #profile-icon {

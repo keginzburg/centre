@@ -4,9 +4,11 @@ import { thunk } from 'redux-thunk';
 import sessionReducer from './session';
 import uiReducer from './ui';
 import usersReducer from './user';
+import articlesReducer from './articles';
 
 const entitiesReducer = combineReducers({
-    users: usersReducer
+    users: usersReducer,
+    articles: articlesReducer
 });
 
 const rootReducer = combineReducers({
