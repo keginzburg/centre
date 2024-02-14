@@ -8,7 +8,9 @@ import { abbreviateDate } from "../../util/util";
 import Modal from "../../modal/Modal";
 import LoginForm from "../../session/LoginForm";
 import SignupForm from "../../session/SignupForm";
+import ArticleDelete from "./ArticleDelete";
 import FeedNav from "../../feed/FeedNav";
+import ArticleOptions from "./ArticleOptions";
 
 import { PulseLoader } from "react-spinners";
 import { PiHandsClappingThin } from "react-icons/pi";
@@ -23,6 +25,7 @@ function ArticleShow() {
     const article = useSelector(state => articleId ? state.entities.articles[articleId] : undefined);
     const author = useSelector(state => article ? state.entities.users[article.authorId] : undefined);
     const modal = useSelector(state => state.ui.modal);
+    const currentUser = useSelector(state => state.session.user);
 
     const navigate = useNavigate();
 
@@ -65,6 +68,7 @@ function ArticleShow() {
             {modal === 'signup' ? <Modal animate={true}><SignupForm /></Modal> : null}
             {modal === 'signup-no-animate' ? <Modal animate={false}><SignupForm /></Modal> : null}
             {modal === 'get-started' ? <Modal animate={true}><SignupForm getStarted={true} /></Modal> : null}
+            {modal === 'delete' ? <Modal animate={false} deletion={true}><ArticleDelete articleId={articleId} /></Modal> : null}
             <FeedNav />
             <div id="article-show">
             <div id="article-show-container">
@@ -89,8 +93,9 @@ function ArticleShow() {
                         <PiHandsClappingThin />
                         <GoComment />
                     </div>
-                    <div id="share">
+                    <div id="share-and-options">
                         <GoShare />
+                        {currentUser && article.authorId === currentUser.id ? <ArticleOptions /> : null}
                     </div>
                 </div>
                 <div id="article-show-content">

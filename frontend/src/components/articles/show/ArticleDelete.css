@@ -1,0 +1,58 @@
+#delete-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#delete-modal h1 {
+    line-height: 38px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: #242424;
+    letter-spacing: -0.014em;
+}
+
+#delete-modal p {
+    padding: 6px 0 36px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6B6B6B;
+}
+
+#delete-modal #cancel-and-delete {
+    display: flex;
+    flex-direction: row;
+}
+
+#cancel-and-delete button {
+    background: 0px center;
+    color: rgb(36, 36, 36);
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 99em;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+
+    font-size: 14px;
+    line-height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+#cancel-and-delete button:last-child {
+    border: 1px solid rgb(201, 74, 74);
+    background-color: rgb(201, 74, 74);
+    color: white;
+}
+
+#cancel-and-delete button:first-child:hover {
+    color: #242424;
+    border: 1px solid #242424;
+}
+#cancel-and-delete button:last-child:hover {
+    /* color: rgb(182, 54, 54); */
+    border: 1px solid rgb(182, 54, 54);
+    background-color: rgb(182, 54, 54);
+}

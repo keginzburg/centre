@@ -101,24 +101,32 @@
     border-bottom: 1px solid #F2F2F2;
 }
 
-#article-show-functionality #clap-and-comment, #share {
-    margin: 10px 0;
+#article-show-functionality #clap-and-comment, #share-and-options {
+    margin: 10px 0px;
     display: flex;
 }
 
 #clap-and-comment svg {
-    margin-right: 18px;
+    margin-right: 24px;
 }
 
-#clap-and-comment svg, #share svg {
+#share-and-options svg {
+    margin-left:  24px;
+}
+
+#clap-and-comment svg, #share-and-options svg {
     cursor: pointer;
     width: 22px;
     height: auto;
     color: #6B6B6B;
 }
 
-#clap-and-comment svg:hover, #share svg:hover {
+#clap-and-comment svg:hover, #share-and-options svg:hover {
     color: black;
+}
+
+#share-and-options svg:focus {
+    outline: 0;
 }
 
 #article-show-content {

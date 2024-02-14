@@ -8,6 +8,9 @@ function ErrorMessage({code}) {
     let errorMessage;
 
     switch (code) {
+        case '403':
+            errorMessage = "FORBIDDEN";
+            break;
         case '404':
             errorMessage = "PAGE NOT FOUND";
             break;

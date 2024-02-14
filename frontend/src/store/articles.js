@@ -2,6 +2,7 @@ import csrfFetch from "./csrf";
 
 export const RECEIVE_ARTICLES = "articles/RECEIVE_ARTICLES";
 export const RECEIVE_ARTICLE = "articles/RECEIVE_ARTICLE";
+export const REMOVE_ARTICLE = "articles/REMOVE_ARTICLE";
 
 export const receiveArticles = payload => {
     return {
@@ -13,6 +14,13 @@ export const receiveArticles = payload => {
 export const receiveArticle = payload => {
     return {
         type: RECEIVE_ARTICLE,
+        payload
+    };
+}
+
+export const removeArticle = payload => {
+    return {
+        type: REMOVE_ARTICLE,
         payload
     };
 }
@@ -59,6 +67,19 @@ export const postArticle = formData => async dispatch => {
     }
 }
 
+export const deleteArticle = articleId => async dispatch => {
+    try {
+        const response = await csrfFetch(`/api/articles/${articleId}`, {
+            method: 'DELETE'
+        })
+        const data = await response.json();
+        await dispatch(removeArticle(data));
+        return data;
+    } catch (err) {
+        throw err;
+    }
+}
+
 const initialState = {};
 
 const articlesReducer = (state = initialState, action) => {
@@ -70,6 +91,9 @@ const articlesReducer = (state = initialState, action) => {
             return { ...nextState, ...action.payload.articles };
         case RECEIVE_ARTICLE:
             nextState[action.payload.article.id] = action.payload.article;
+            return nextState;
+        case REMOVE_ARTICLE:
+            delete nextState[action.payload.article.id];
             return nextState;
         default:
             return state;

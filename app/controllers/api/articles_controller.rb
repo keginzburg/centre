@@ -2,7 +2,7 @@ class Api::ArticlesController < ApplicationController
 
     wrap_parameters include: Article.attribute_names + [:photo]
 
-    before_action :require_logged_in, only: [:create]
+    before_action :require_logged_in, only: [:create, :destroy]
 
     def index
         if params["limit"]
@@ -39,6 +39,22 @@ class Api::ArticlesController < ApplicationController
             end
 
             render json: { errors: errors }, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        @article = Article.find_by(id: params[:id])
+        unless @article
+            render json: { errors: "The requested story could not be found but may be available in the future."}, status: 404
+        end
+        if @article.author != current_user
+            render json: { errors: "You are not this story's author and do not have the necessary permissions to delete it." }, status: 403
+        else 
+            if @article.destroy
+                render 'api/articles/show'
+            else
+                render json: { errors: "We're unable to delete that story. Please try again." }, status: 400
+            end
         end
     end
 

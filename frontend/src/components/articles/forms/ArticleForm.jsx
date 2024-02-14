@@ -21,7 +21,8 @@ function ArticleForm() {
 
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [photoFile, setPhotoFile] = useState (null);
+    const [photoFile, setPhotoFile] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(null);
     const [add, setAdd] = useState(false);
     const [publishDisabled, setPublishDisabled] = useState(true);
     const [errors, setErrors] = useState({  "title": null, "body": null });
@@ -62,6 +63,12 @@ function ArticleForm() {
     const handleFile = (e) => {
         const file = e.currentTarget.files[0];
         setPhotoFile(file);
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => setPhotoUrl(fileReader.result);
+        }
+        else setPhotoUrl(null);
     }
     
     const handleSubmit = e => {
@@ -101,6 +108,29 @@ function ArticleForm() {
                 navigate(`/articles/${data.article.id}`);
             });
     }
+
+    const handlePhotoDelete = e => {
+        console.log(e);
+        document.addEventListener('keydown', e => {
+            if (e.keyCode == 8) {
+                setPhotoFile(null);
+                setPhotoUrl(null);
+            }        })
+        // console.log(e.keyCode);
+        // if (e.keyCode == 8) {
+        //     setPhotoFile(null);
+        //     setPhotoUrl(null);
+        // }
+    }
+
+    let preview;
+    if (photoUrl) preview = <img
+                                id="preview-photo-upload"
+                                src={photoUrl}
+                                alt="photo preview"
+                                onFocus={handlePhotoDelete}
+                                tabIndex={0}
+                            />;
 
     if (loading) return (
         <>
@@ -163,6 +193,8 @@ function ArticleForm() {
                         />
                     </div>}
                 </div>
+
+                {preview}
             </form>
         </>
     )

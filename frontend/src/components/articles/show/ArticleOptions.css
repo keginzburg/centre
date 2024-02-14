@@ -1,0 +1,43 @@
+#article-options-dropdown {
+    position: absolute;
+    top: 40px;
+    left: -65px;
+
+    z-index: 700;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 200px;
+    max-width: 200px;
+
+    padding: 8px 0;
+
+    border-radius: 4px;
+
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: rgba(0,0,0,0.05) 0px 0px 4px, rgba(0,0,0,0.15) 0px 2px 8px;
+}
+
+#article-options-dropdown span {
+    color: #6B6B6B;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#article-options-dropdown span:first-child {
+    padding: 8px 20px 16px;
+}
+
+#article-options-dropdown span:last-child {
+    padding: 16px 20px 8px;
+
+    color: #C94A4A;
+    border-top: 1px solid #F2F2F2;
+}
+
+#article-options-dropdown span:hover {
+    color: #242424;
+}
