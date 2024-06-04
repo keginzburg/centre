@@ -11,7 +11,7 @@ function ArticleIndexItem({article, author}) {
     return (
         <div id="article-index-item">
             <Link to={`/users/${author.id}`} id="article-index-item-user">
-                <img src={author.photoUrl} alt="profile-thumbnail" />
+                <img src={author.photoUrl ? author.photoUrl : profile} alt="profile-thumbnail" />
                 <span>{author.name}</span>
                 <span>·</span>
                 <span>{article.updatedAt}</span>
@@ -22,7 +22,7 @@ function ArticleIndexItem({article, author}) {
                         <h1>{article.title}</h1>
                         <h2>{abbreviateBody(article.body)}</h2>
                     </div>
-                    <img src={article.photoUrl} alt="article-thumbnail" />
+                    {article.photoUrl && <img src={article.photoUrl} alt="article-thumbnail" />}
                 </div>
                 <div id="article-index-item-addl">
                     <span>{article.minRead} min read</span>

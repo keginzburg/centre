@@ -11,6 +11,7 @@ import SignupForm from "../../session/SignupForm";
 import ArticleDelete from "./ArticleDelete";
 import FeedNav from "../../feed/FeedNav";
 import ArticleOptions from "./ArticleOptions";
+import ArticleFooter from "./ArticleFooter";
 
 import { PulseLoader } from "react-spinners";
 import { PiHandsClappingThin } from "react-icons/pi";
@@ -30,6 +31,10 @@ function ArticleShow() {
     const navigate = useNavigate();
 
     const [imgModal, setImgModal] = useState(false);
+
+    const lineBreakBody = body => {
+        return body.split('\r\n').map(paragraph => <p>{paragraph}</p>);
+    }
 
     useEffect(() => {
         window.scrollTo(0,0);
@@ -58,6 +63,7 @@ function ArticleShow() {
                     speedMultiplier={1}
                 />
             </div>
+            <ArticleFooter />
         </>
     )
 
@@ -95,7 +101,7 @@ function ArticleShow() {
                     </div>
                     <div id="share-and-options">
                         <GoShare />
-                        {currentUser && article.authorId === currentUser.id ? <ArticleOptions /> : null}
+                        {currentUser && article.authorId === currentUser.id ? <ArticleOptions articleId={articleId} navigate={navigate} /> : null}
                     </div>
                 </div>
                 <div id="article-show-content">
@@ -104,10 +110,11 @@ function ArticleShow() {
                         <img src={article.photoUrl} alt="article photo" id="img-modal" onClick={() => setImgModal(false)} />
                     </div>}
                     {article.photoUrl && <img src={article.photoUrl} alt="article photo" onClick={() => setImgModal(true)}/>}
-                    <p>{article.body}</p>
+                    {lineBreakBody(article.body)}
                 </div>
             </div>
             </div>
+            <ArticleFooter />
         </>
     )
 }

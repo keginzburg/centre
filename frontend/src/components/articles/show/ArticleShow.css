@@ -11,7 +11,8 @@
     flex-direction: column;
     align-items: center;
     width: 680px;
-    /* padding: 0 30vw; */
+    /* Below rule is needed as placeholder space for "More by [USER]" Component */
+    margin-bottom: 50vh;
 }
 
 #article-show-container h1 {
@@ -197,8 +198,13 @@
     } 
 }
 
-#article-show-content p {
+#article-show-content p:nth-child(1) {
     margin-top: 42px;
+
+}
+
+#article-show-content p {
+    margin-top: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 200;
     font-size: 20px;
@@ -207,4 +213,8 @@
     letter-spacing: 0.01em;
     line-height: 32px;
 
+}
+
+#article-show-content p:last-child {
+    margin-bottom: 42px;
 }

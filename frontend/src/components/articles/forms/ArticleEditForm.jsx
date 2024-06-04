@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { postArticle } from '../../../store/articles';
+import { fetchArticle, patchArticle } from '../../../store/articles';
 import { autoGrow } from '../../util/util';
 
 import FormNav from './FormNav';
@@ -12,27 +12,67 @@ import { PulseLoader } from 'react-spinners';
 import { CiCirclePlus } from "react-icons/ci";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 
-import './ArticleForm.css';
+import './ArticleEditForm.css';
 
-function ArticleForm() {
+function ArticleEditForm() {
+    const { articleId } = useParams();
+
+    const ref = useRef();
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
+    const article = useSelector(state => state.entities.articles[articleId] ? state.entities.articles[articleId] : null);
 
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
+    const [title, setTitle] = useState(article ? article.title : "");
+    const [body, setBody] = useState(article ? article.body : "");
     const [photoFile, setPhotoFile] = useState(null);
-    const [photoUrl, setPhotoUrl] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(article ? article.photoUrl : null);
 
     const [add, setAdd] = useState(false);
     const [publishDisabled, setPublishDisabled] = useState(true);
     const [errors, setErrors] = useState({  "title": null, "body": null });
-
+    
     const [animate, setAnimate] = useState(true);
 
     const [loading, setLoading] = useState(false);
 
+    // If there is not current session, then reroute user to Splash.
     if (!currentUser) navigate("/");
+
+    // If the fetched article's author does not match the current session user, then reroute user to Error component with 401 Unauthorized.
+    if (article && article.authorId !== currentUser.id) navigate("/not-found?error=401");
+    
+    // useEffect tracking `articleId` from frontend params to fetch proper Article data. If Article does not exist, then user is rerouted to 404 Error component.
+    useEffect(() => {
+        window.scrollTo(0,0);
+        if (articleId) {
+            dispatch(fetchArticle(articleId))
+                .then(() => {
+                    
+                })
+                .catch(async (err) => {
+                    let data;
+                    try {
+                        data = await err.clone().json();
+                    } catch {
+                        data = await err.text();
+                    }
+                    if (err.status === 404) navigate("/not-found?error=404");
+                })
+        }
+    }, [dispatch, navigate, articleId])
+
+    // useEffect that tracks for updated article data and then sets state variables to current data. It also informs the `textarea` element to rerender with an appropriate height according to the body's current `scrollHeight` property.
+    useEffect(() => {
+        if (article) {
+            setTitle(article.title);
+            setBody(article.body);
+            setPhotoUrl(article.photoUrl);
+            ref.current.style.height = "auto";
+            ref.current.style.height = (ref.current.scrollHeight) + "px";
+        }
+    }, [article])
 
     // useEffect tracking `title` and `body` state variables for emptiness and setting `publishDisabled` state variable accordingly
     useEffect(() => {
@@ -81,27 +121,25 @@ function ArticleForm() {
     // handler for Article submission
     const handleSubmit = e => {
         e.preventDefault();
-        // `setAnimate` to true to ensure frontend errors will mount the DOM once again.
         setAnimate(true);
 
-        // `validate` is invoked to gather frontend errors and conditional ensures that truthy values will be added to `errors` state variable.
         const errors = validate();
         if (Object.values(errors).filter(err => err !== null).length !== 0) {
             setErrors(errors);
             return;
         }
 
-        // If no errors are gathered, then `loading` is set to true to start PulseLoader component animation and `errors` is set to empty object to clear previous frontend errors.
         setLoading(true);
         setErrors({});
 
-        // As articles can have an attached photo, FormData is used to append that photo file data.
         const formData = new FormData();
+        formData.append('article[id]', articleId);
         formData.append('article[title]', title);
         formData.append('article[body]', body);
-        if (photoFile) formData.append('article[photo]', photoFile);
+        if (photoFile) formData.append('article[photo]', photoFile)
+        if (!photoUrl) formData.append('article[photoDelete]', true)
 
-        return dispatch(postArticle(formData))
+        return dispatch(patchArticle(formData))
             .catch(async (err) => {
                 let data;
                 try {
@@ -121,11 +159,10 @@ function ArticleForm() {
             });
     }
 
-    // handler for photo preview HTML element to remove photo data, url, and photo file from file <input> element on a `Backspace` key detection.
     const handlePhotoDelete = e => {
         document.addEventListener('keydown', e => {
             if (e.keyCode == 8) {
-                document.getElementById("article-photo-upload").value = "";
+                // document.getElementById("article-photo-upload").value = "";
                 setPhotoFile(null);
                 setPhotoUrl(null);
             }        })
@@ -140,13 +177,13 @@ function ArticleForm() {
                                 tabIndex={0}
                             />;
 
-    if (loading) return (
+    if (loading || !article) return (
         <>
             <FormNav 
                 publishDisabled={publishDisabled}
                 handleSubmit={handleSubmit}
             />
-            <form id="article-form">
+            <form id="article-edit-form">
                 <PulseLoader
                     color="#191919"
                     margin={4}
@@ -163,14 +200,16 @@ function ArticleForm() {
                 publishDisabled={publishDisabled}
                 handleSubmit={handleSubmit}
             />
-            <form id="article-form">
+            <form id="article-edit-form">
                 {animate && renderArticleError()}
                 <input
                     type="text"
                     value={title}
                     id="title"
                     placeholder='Title'
-                    onChange={e => setTitle(e.target.value)}
+                    onChange={e => {
+                        setTitle(e.target.value)
+                    }}
                 />
 
                 <textarea
@@ -179,10 +218,14 @@ function ArticleForm() {
                     onInput={autoGrow}
                     id="body"
                     placeholder='Tell your story...'
-                    onChange={e => setBody(e.target.value)}
+                    onChange={e => {
+                        setBody(e.target.value)
+                    }}
+
+                    ref={ref}
                 />
 
-                <div id="additional">
+                {!photoUrl && <div id="additional">
                     <CiCirclePlus
                         id="add-button"
                         className={add ? "add" : null}
@@ -200,7 +243,7 @@ function ArticleForm() {
                             onChange={handleFile}
                         />
                     </div>}
-                </div>
+                </div>}
 
                 {preview}
             </form>
@@ -208,4 +251,4 @@ function ArticleForm() {
     )
 }
 
-export default ArticleForm;
+export default ArticleEditForm;

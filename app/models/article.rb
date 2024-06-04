@@ -13,6 +13,8 @@ class Article < ApplicationRecord
         foreign_key: :user_id,
         class_name: :User
 
+    has_many :claps, as: :clappable
+
     has_one_attached :photo
 
     def updated_in_words_without_year

@@ -10,6 +10,7 @@ require "open-uri"
 # ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
+    Clap.destroy_all
     Article.destroy_all
     User.destroy_all
   
@@ -17,6 +18,7 @@ require "open-uri"
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('articles')
+    ApplicationRecord.connection.reset_pk_sequence!('claps')
   
     puts "Creating users..."
     user1 = User.create!(
@@ -150,6 +152,14 @@ require "open-uri"
     article7.photo.attach(
       io: URI.open("https://centre-seeds.s3.amazonaws.com/articles/demo.jpeg"),
       filename: "demo.jpeg"
+    )
+
+    puts "Creating claps..."
+    clap1 = Clap.create!(
+      amount: 1,
+      clappable_type: "Article",
+      clappable_id: article1.id,
+      clapper_id: user1.id
     )
 
     puts "Done!"

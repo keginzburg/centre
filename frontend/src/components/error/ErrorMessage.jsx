@@ -8,6 +8,9 @@ function ErrorMessage({code}) {
     let errorMessage;
 
     switch (code) {
+        case '401':
+            errorMessage = "UNAUTHORIZED";
+            break;
         case '403':
             errorMessage = "FORBIDDEN";
             break;
@@ -31,7 +34,7 @@ function ErrorMessage({code}) {
                             <h1>{errorMessage}</h1>
                             <h2>{code ? code : '404'}</h2>
                             <h3>Out of nothing, something.</h3>
-                            <p>You can find (just about) anything on Medium — apparently even a page that doesn’t exist. Maybe these stories about finding what you didn’t know you were looking for will take you somewhere new?</p>
+                            <p>You can find (just about) anything on Centre — apparently even a page that doesn’t exist. Maybe these stories about finding what you didn’t know you were looking for will take you somewhere new?</p>
                             <Link to="/">Home</Link>
                         </div>
                     </div>

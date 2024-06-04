@@ -7,7 +7,7 @@ import { IoEllipsisHorizontal } from "react-icons/io5";
 
 import './ArticleOptions.css';
 
-function ArticleOptions() {
+function ArticleOptions({articleId, navigate}) {
     const dispatch = useDispatch();
 
     const inputRef = useRef(null);
@@ -26,6 +26,11 @@ function ArticleOptions() {
         }
     }
 
+    const handleEdit = e => {
+        e.stopPropagation();
+        navigate(`/articles/${articleId}/edit`);
+    }
+
     const openDeleteModal = e => {
         e.stopPropagation();
         dispatch(setModal("delete"));
@@ -36,7 +41,7 @@ function ArticleOptions() {
             <IoEllipsisHorizontal onClick={handleToggle} />
             {dropdown && 
             <div id="article-options-dropdown" ref={inputRef}>
-                <span>Edit story</span>
+                <span onClick={handleEdit}>Edit story</span>
                 <span onClick={openDeleteModal}>Delete story</span>
             </div>
             }

@@ -4,6 +4,8 @@ export const RECEIVE_ARTICLES = "articles/RECEIVE_ARTICLES";
 export const RECEIVE_ARTICLE = "articles/RECEIVE_ARTICLE";
 export const REMOVE_ARTICLE = "articles/REMOVE_ARTICLE";
 
+import { REMOVE_CURRENT_USER } from "./session";
+
 export const receiveArticles = payload => {
     return {
         type: RECEIVE_ARTICLES,
@@ -67,6 +69,21 @@ export const postArticle = formData => async dispatch => {
     }
 }
 
+export const patchArticle = formData => async dispatch => {
+    // debugger
+    try {
+        const response = await csrfFetch(`/api/articles/${formData.get('article[id]')}`, {
+            method: 'PATCH',
+            body: formData
+        })
+        const data = await response.json();
+        dispatch(receiveArticle(data));
+        return data;
+    } catch (err) {
+        throw err;
+    }
+}
+
 export const deleteArticle = articleId => async dispatch => {
     try {
         const response = await csrfFetch(`/api/articles/${articleId}`, {
@@ -95,6 +112,8 @@ const articlesReducer = (state = initialState, action) => {
         case REMOVE_ARTICLE:
             delete nextState[action.payload.article.id];
             return nextState;
+        // case REMOVE_CURRENT_USER:
+        //     return {};
         default:
             return state;
     }

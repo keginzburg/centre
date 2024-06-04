@@ -1,0 +1,26 @@
+#article-foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    right: 0;
+    color: red;
+
+    text-decoration: none;
+
+    border-top: 1px solid #E5E5E5;
+    /* margin-top: 50vh; */
+    padding: 24px 0px;
+
+    background-color: #F9F9F9;
+}
+
+#article-foot a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    line-height: 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0 10px;
+}

@@ -1,0 +1,104 @@
+#article-edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    padding: 100px 0 0;
+
+}
+
+#article-edit-form #title, #body {
+    width: 50vw;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    border: 1px solid transparent;
+    outline: 1px solid transparent;
+    caret-color: #b3b3b1;
+}
+
+#article-edit-form #title {
+    font-size: 44px;
+    padding: 10px 1vw 2px; 
+}
+
+#article-edit-form #title:focus {
+    border-left: 1px solid #b3b3b1;
+}
+
+#body {
+    font-size: 22px;
+    padding: 6px 1vw;
+    resize: none;
+}
+
+#title::placeholder {
+    color: #b3b3b1;
+}
+#body::placeholder {
+    color: #b3b3b1;
+}
+
+#article-edit-form #additional {
+    position: relative;
+    height: fit-content;
+    width: 50vw;
+}
+
+#article-edit-form #additional #add-button {
+    width: 36px;
+    height: auto;
+    color: #b3b3b1;
+    position: absolute;
+    left: -50px;
+    top: -4px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+#article-edit-form #additional #add-button:hover {
+    color: black;
+}
+
+#article-edit-form #additional #add-button.add {
+    transform: rotate(45deg);
+}
+
+#article-edit-form #additional #photo-upload-button label {
+    width: fit-content;
+    height: fit-content;
+    border: 1.5px solid rgb(83,161,77);
+    border-radius: 200%;
+    display: flex;
+    padding: 3px;
+    color: rgb(83,161,77);
+    cursor: pointer;
+    animation-name: photo-upload-grow;
+    animation-duration: 0.1s;
+}
+
+@keyframes photo-upload-grow {
+    from {
+        scale: 0%;
+    }
+
+    to {
+        scale: 100%;
+    }
+}
+
+#article-edit-form #additional #photo-upload-button #photo-upload-icon {
+    width: 19px;
+    height: auto;
+}
+
+#preview-photo-upload {
+    margin: 20px 0 200px;
+    width: 50vw;
+    border: 3px solid #03a87c;
+    height: auto;
+}
+
+#preview-photo-upload:focus {
+    border: 3px solid #34e79a;
+}
