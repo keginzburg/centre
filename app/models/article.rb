@@ -15,6 +15,10 @@ class Article < ApplicationRecord
 
     has_many :claps, as: :clappable
 
+    has_many :clappers,
+        through: :claps,
+        source: :clapper
+
     has_one_attached :photo
 
     def updated_in_words_without_year

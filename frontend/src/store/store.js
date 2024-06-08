@@ -5,10 +5,12 @@ import sessionReducer from './session';
 import uiReducer from './ui';
 import usersReducer from './user';
 import articlesReducer from './articles';
+import clapReducer from './clap';
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
-    articles: articlesReducer
+    articles: articlesReducer,
+    claps: clapReducer
 });
 
 const rootReducer = combineReducers({

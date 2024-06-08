@@ -1,3 +1,5 @@
+import { ClipLoader } from "react-spinners";
+
 export function obscureEmail(email) {
     const [local, domain] = email.split("@");
     return local.slice(0,2) + "•••••••@" + domain;
@@ -32,4 +34,18 @@ export const autoGrow = e => {
         e.target.style.height = "auto";
         e.target.style.height = (e.target.scrollHeight) + "px";
     }
+}
+
+export const totalClapAmount = (article, claps) => {
+    const div = <div id="clap-placeholder-div"/>;
+    if (!article.clapIds || !claps) return <ClipLoader margin={4} size={5}/>
+    if (article.clapIds.length === 0) return div;
+    if (Object.values(claps).length === 0) return div;
+    const arrayOfClapAmounts = article.clapIds.map(clapId => claps[clapId].amount);
+    if (arrayOfClapAmounts.length === 0) return " ";
+    return arrayOfClapAmounts.reduce((count, next) => count + next);
+}
+
+export const filterClappers = (article, claps, users) => {
+    return article.clapIds.map(clapId => users[claps[clapId].clapperId]);
 }

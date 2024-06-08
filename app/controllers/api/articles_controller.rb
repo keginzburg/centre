@@ -5,9 +5,9 @@ class Api::ArticlesController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index
+        # debugger
         if params["limit"]
             limit = params["limit"]
-            # debugger
             @articles = Article.includes(:author).all.order('updated_at DESC').limit(limit)
         else
             @articles = Article.includes(:author).all
@@ -16,7 +16,7 @@ class Api::ArticlesController < ApplicationController
     end
 
     def show
-        @article = Article.find_by(id: params[:id])
+        @article = Article.includes(:claps, :clappers).find_by(id: params[:id])
         if @article
             render 'api/articles/show'
         else

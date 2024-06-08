@@ -6,8 +6,7 @@ json.articles do
             json.createdAt article.created_in_words_with_year
             json.minRead article.reading_time
             json.authorId article.author.id
-            json.photoUrl article.photo.attached? ? article.photo.url : nil
-        end
+            json.photoUrl article.photo.attached? ? article.photo.url : nil        end
     end
 end
 

@@ -8,13 +8,13 @@ import { abbreviateDate } from "../../util/util";
 import Modal from "../../modal/Modal";
 import LoginForm from "../../session/LoginForm";
 import SignupForm from "../../session/SignupForm";
+import ArticleClap from "./ArticleClap";
 import ArticleDelete from "./ArticleDelete";
 import FeedNav from "../../feed/FeedNav";
 import ArticleOptions from "./ArticleOptions";
 import ArticleFooter from "./ArticleFooter";
 
 import { PulseLoader } from "react-spinners";
-import { PiHandsClappingThin } from "react-icons/pi";
 import { GoComment } from "react-icons/go";
 import { GoShare } from "react-icons/go";
 
@@ -23,8 +23,10 @@ import './ArticleShow.css';
 function ArticleShow() {
     const { articleId } = useParams();
     const dispatch = useDispatch();
+
     const article = useSelector(state => articleId ? state.entities.articles[articleId] : undefined);
     const author = useSelector(state => article ? state.entities.users[article.authorId] : undefined);
+
     const modal = useSelector(state => state.ui.modal);
     const currentUser = useSelector(state => state.session.user);
 
@@ -33,7 +35,7 @@ function ArticleShow() {
     const [imgModal, setImgModal] = useState(false);
 
     const lineBreakBody = body => {
-        return body.split('\r\n').map(paragraph => <p>{paragraph}</p>);
+        return body.split('\r\n').map((paragraph, idx) => <p key={idx}>{paragraph}</p>);
     }
 
     useEffect(() => {
@@ -41,16 +43,16 @@ function ArticleShow() {
         if (articleId) {
             dispatch(fetchArticle(articleId))
                 .catch(async (err) => {
-                    let data;
-                    try {
-                        data = await err.clone().json();
-                    } catch {
-                        data = await err.text();
-                    }
+                    // let data;
+                    // try {
+                    //     data = await err.clone().json();
+                    // } catch {
+                    //     data = await err.text();
+                    // }
                     if (err.status === 404) navigate("/not-found?error=404");
                 })
         }
-    }, [dispatch, articleId])
+    }, [dispatch, navigate, articleId])
 
     if (!article || !author) return (
         <>
@@ -96,7 +98,8 @@ function ArticleShow() {
                 </div>
                 <div id="article-show-functionality">
                     <div id="clap-and-comment">
-                        <PiHandsClappingThin />
+                        <ArticleClap article={article} />
+                        
                         <GoComment />
                     </div>
                     <div id="share-and-options">

@@ -161,6 +161,30 @@ require "open-uri"
       clappable_id: article1.id,
       clapper_id: user1.id
     )
+    clap2 = Clap.create!(
+      amount: 1,
+      clappable_type: "Article",
+      clappable_id: article1.id,
+      clapper_id: user3.id
+    )
+    clap3 = Clap.create!(
+      amount: 1,
+      clappable_type: "Article",
+      clappable_id: article1.id,
+      clapper_id: user4.id
+    )
+    clap4 = Clap.create!(
+      amount: 1,
+      clappable_type: "Article",
+      clappable_id: article1.id,
+      clapper_id: user5.id
+    )
+    clap5 = Clap.create!(
+      amount: 10,
+      clappable_type: "Article",
+      clappable_id: article1.id,
+      clapper_id: user6.id
+    )
 
     puts "Done!"
   # end
