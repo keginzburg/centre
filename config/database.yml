@@ -84,3 +84,4 @@ production:
   database: centre_production
   username: centre
   password: <%= ENV["CENTRE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
