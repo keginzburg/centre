@@ -1,0 +1,64 @@
+#error-message {
+    margin-top: 90px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+#error-message #error-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%!important;
+}
+
+#error-message #error-container img {
+    width: 450px!important;
+    height: 450px!important;
+    padding: 0 20px!important;
+}
+
+#error-message #error-container > div {
+    padding: 0 20px!important;
+}
+
+#error-message #error-container h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px!important;
+    font-weight: 400!important;
+    font-style: normal!important;
+    letter-spacing: 0!important;
+    text-transform: uppercase!important;
+}
+#error-message #error-container h2 {
+    font-size: 152px!important;
+    color: rgba(0,0,0,0.3)!important;
+    margin-top: 11px!important;
+    font-family: 'Times New Roman', Times, serif;
+}
+#error-message #error-container h3 {
+    font-size: 66px!important;
+    color: rgba(0,0,0,0.8)!important;
+    margin-top: 11pm!important;
+    line-height: 66px!important;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#error-message #error-container p {
+    font-size: 18px!important;
+    line-height: 24px!important;
+    margin-top: 11px!important;
+    color: rgba(0,0,0,0.8)!important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#error-message #error-container a {
+    font-size: 20px!important;
+    line-height: 24px!important;
+    text-decoration: underline!important;
+    color: rgba(0,0,0,0.8)!important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 11px!important;
+}

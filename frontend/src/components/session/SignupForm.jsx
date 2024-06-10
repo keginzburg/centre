@@ -11,7 +11,7 @@ import { PulseLoader } from 'react-spinners';
 
 import './SignupForm.css';
 
-function SignupForm() {
+function SignupForm({getStarted}) {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
 
@@ -56,8 +56,8 @@ function SignupForm() {
         }
 
         setLoading(true);
-
         setErrors({});
+        
         return dispatch(sessionActions.signup({email, name, password}))
             .catch(async (err) => {
                 let data;
@@ -107,7 +107,7 @@ function SignupForm() {
 
     return (
         <form id="signup-form" onSubmit={handleSubmit}>
-            <h1>Sign up</h1>
+            <h1>{getStarted ? "Create an account to start writing." : "Sign up"}</h1>
             <p>Enter your email address, name, and password to create an account.</p>
 
             <label htmlFor="email" className={errors["email"] ? 'label-error' : null}>

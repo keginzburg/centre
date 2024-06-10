@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 import FeedNav from "./FeedNav";
+import ArticleIndex from "../articles/index/ArticleIndex";
 
 import './Feed.css';
 
@@ -13,7 +14,7 @@ function Feed() {
     return (
         <>
             <FeedNav />
-            {/* <FeedIndex /> */}
+            <ArticleIndex />
             {/* <SideBar /> */}
         </>
     )

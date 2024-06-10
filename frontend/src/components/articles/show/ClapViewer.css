@@ -1,0 +1,62 @@
+#clap-viewer-container #clap-viewer-title {
+    font-size: 20px;
+    padding: 0 12px;
+}
+
+#clapper-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#clapper-details {
+    display: flex;
+    padding: 12px 0;
+}
+
+#clapper-details a {
+    text-decoration: none;
+}
+
+#clapper-details h2 {
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #242424;
+    font-family: Arial, Helvetica, sans-serif;
+    /* padding: 10px; */
+    /* text-decoration: none; */
+}
+
+#clapper-container img {
+    width: 48px;
+    height: 48px;
+    border-radius: 99em;
+    border: 1px solid #F2F2F2;
+
+    margin-right: 20px;
+}
+
+#clapper-follow {
+    border-radius: 99em;
+    border: 1px solid #1A8917;
+    background-color: #1A8917;
+    color: white;
+
+    height: fit-content;
+
+    padding: 5px 12px;
+    margin-top: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+
+    cursor: pointer;
+
+}
+
+#clapper-follow:hover {
+    filter: brightness(90%);
+}

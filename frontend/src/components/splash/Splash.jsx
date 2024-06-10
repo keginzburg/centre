@@ -7,6 +7,7 @@ import Modal from "../modal/Modal";
 import LoginForm from '../session/LoginForm';
 import SignupForm from "../session/SignupForm";
 
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
@@ -15,6 +16,10 @@ import "./Splash.css";
 function Splash() {
     const currentUser = useSelector(state => state.session.user);
     const modal = useSelector(state => state.ui.modal);
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
 
     if (currentUser) return <Navigate to="/feed" replace="true"/>
 

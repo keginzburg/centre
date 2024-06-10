@@ -5,6 +5,9 @@ import * as sessionActions from "./store/session";
 import Splash from "./components/splash/Splash";
 import Feed from "./components/feed/Feed";
 import ArticleForm from "./components/articles/forms/ArticleForm";
+import ArticleEditForm from "./components/articles/forms/ArticleEditForm";
+import ArticleShow from "./components/articles/show/ArticleShow";
+import Error from "./components/error/Error";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -36,8 +39,24 @@ const router = createBrowserRouter([
         element: <Feed />
       },
       {
+        path: '/articles/:articleId',
+        element: <ArticleShow />
+      },
+      {
         path: '/new-story',
         element: <ArticleForm />
+      },
+      {
+        path: '/articles/:articleId/edit',
+        element: <ArticleEditForm />
+      },
+      {
+        path: '/error',
+        element: <Error />
+      },
+      {
+        path: '*',
+        element: <Error />
       }
     ]
   }

@@ -59,6 +59,21 @@
     box-shadow: rgba(0,0,0,0.15) 0px 2px 10px;
 }
 
+#modal-claps {
+    /* scroll-behavior:smooth; */
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    padding: 0 100px;
+    min-height: 695px;
+    overflow: scroll;
+
+    background-color: transparent;
+}
+
 #modal.modal-animate1 {
     animation-name: modal-grow;
     animation-duration: 0.5s;
@@ -90,6 +105,21 @@
 
 }
 
+#modal-claps.modal-animate3 {
+    animation-name: modal-zoom-up;
+    animation-duration: 0.5s;
+}
+
+@keyframes modal-zoom-up {
+    from {
+        transform: translateY(5000px);
+    }
+
+    to {
+        transform: translateY(0px)
+    }
+}
+
 #modal-exit {
     position: absolute;
     top: 20px;
@@ -100,5 +130,20 @@
 }
 
 #modal-exit:hover {
+    color: rgba(25,25,25,1);
+}
+
+#modal-exit-claps {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    color: gray;
+    cursor: pointer;
+    transform: scaleX(1.15);
+
+    /* z-index: 801; */
+}
+
+#modal-exit-claps:hover {
     color: rgba(25,25,25,1);
 }

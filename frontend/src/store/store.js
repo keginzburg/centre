@@ -3,15 +3,21 @@ import { thunk } from 'redux-thunk';
 
 import sessionReducer from './session';
 import uiReducer from './ui';
+import errorReducer from './error';
 import usersReducer from './user';
+import articlesReducer from './articles';
+import clapReducer from './clap';
 
 const entitiesReducer = combineReducers({
-    users: usersReducer
+    users: usersReducer,
+    articles: articlesReducer,
+    claps: clapReducer
 });
 
 const rootReducer = combineReducers({
     entities: entitiesReducer,
     session: sessionReducer,
+    error: errorReducer,
     ui: uiReducer
 });
 

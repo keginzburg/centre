@@ -1,7 +1,9 @@
 export const SET_MODAL = "ui/SET_MODAL";
 export const REMOVE_MODAL = "ui/REMOVE_MODAL";
 export const CLEAR_MODALS = "ui/CLEAR_MODALS";
+
 import { SET_CURRENT_USER } from "./session";
+import { REMOVE_ARTICLE } from "./articles";
 
 export const setModal = modal => {
     return {
@@ -38,6 +40,8 @@ const uiReducer = (state = initialState, action) => {
         case CLEAR_MODALS:
             return { modal: null };
         case SET_CURRENT_USER:
+            return { modal: null };
+        case REMOVE_ARTICLE:
             return { modal: null };
         default:
             return state;
