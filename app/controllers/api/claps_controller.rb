@@ -1,10 +1,4 @@
 class Api::ClapsController < ApplicationController
-
-    # t.integer "amount", null: false
-    # t.string "clappable_type", null: false
-    # t.bigint "clappable_id", null: false
-    # t.bigint "clapper_id", null: false
-
     wrap_parameters include: Clap.attribute_names
 
     def create
@@ -38,7 +32,21 @@ class Api::ClapsController < ApplicationController
     end
 
     def destroy
+        @clap = Clap.find_by(id: params[:id])
 
+        unless @clap
+            render json: { errors: "The applause could not be found but may be available in the future."}, status: 404
+        end
+
+        if @clap.clapper != current_user
+            render json: { errors: "You are not the owner of this applause and do not have the necessary permissions to add to it." }, status: 403
+        else
+            if @clap.destroy
+                render 'api/claps/show'
+            else
+                render json: { errors: @clap.errors.full_messages }, status: :unprocessable_entity
+            end
+        end
     end
 
     def clap_params

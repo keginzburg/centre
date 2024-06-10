@@ -14,6 +14,7 @@ const ArticleClap = ({article}) => {
 
     const modal = useSelector(state => state.ui.modal);
     const currentUser = useSelector(state => state.session.user);
+    const clapError = useSelector(state => state.error.clap);
 
     const claps = useSelector(state => state.entities.claps ? state.entities.claps : undefined);
 
@@ -21,7 +22,10 @@ const ArticleClap = ({article}) => {
     
     const openClapsModal = () => dispatch(setModal("claps"));
 
-    const existingClap = Object.values(claps).find(clap => clap.clapperId === currentUser.id && clap.clappableId === article.id && clap.clappableType === "Article");
+    let existingClap;
+    if (currentUser) {
+        existingClap = Object.values(claps).find(clap => clap.clapperId === currentUser.id && clap.clappableId === article.id && clap.clappableType === "Article");
+    }
 
     return (
         <>
@@ -33,6 +37,7 @@ const ArticleClap = ({article}) => {
             <p onClick={openClapsModal} id="clap-count">
                 {totalClapAmount(article, claps)}
             </p>
+            {clapError ? <p id="clap-count">{clapError}</p> : null}
 
             {modal === 'claps' ?
                 <Modal

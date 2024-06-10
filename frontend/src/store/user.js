@@ -1,5 +1,5 @@
 import { RECEIVE_ARTICLES, RECEIVE_ARTICLE } from "./articles";
-import { RECEIVE_CLAP } from "./clap";
+import { RECEIVE_CLAP, REMOVE_CLAP } from "./clap";
 
 const initialState = {};
 
@@ -13,7 +13,7 @@ const usersReducer = (state = initialState, action) => {
         case RECEIVE_ARTICLE:
             nextState[action.payload.author.id] = action.payload.author;
             return { ...nextState, ...action.payload.clappers };
-        case RECEIVE_CLAP:
+        case RECEIVE_CLAP, REMOVE_CLAP:
             nextState[action.payload.clapper.id] = action.payload.clapper;
             return nextState;
         default:

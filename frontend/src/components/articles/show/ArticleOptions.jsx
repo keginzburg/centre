@@ -1,14 +1,22 @@
 import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { setModal } from "../../../store/ui";
+import { deleteClap } from "../../../store/clap";
 
 import { IoEllipsisHorizontal } from "react-icons/io5";
 
 import './ArticleOptions.css';
 
-function ArticleOptions({articleId, navigate}) {
+function ArticleOptions({article, navigate}) {
     const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.user);
+    const claps = useSelector(state => state.entities.claps);
+
+    let existingClap;
+    if (currentUser) {
+        existingClap = Object.values(claps).find(clap => clap.clapperId === currentUser.id && clap.clappableId === article.id && clap.clappableType === "Article");
+    }
 
     const inputRef = useRef(null);
 
@@ -28,7 +36,20 @@ function ArticleOptions({articleId, navigate}) {
 
     const handleEdit = e => {
         e.stopPropagation();
-        navigate(`/articles/${articleId}/edit`);
+        navigate(`/articles/${article.id}/edit`);
+    }
+
+    const handleClapDelete = () => {
+        if (!currentUser) {
+            dispatch(setModal("signup"));
+            return;
+        }
+
+        setDropdown(false);
+
+        if (existingClap) {
+            dispatch(deleteClap(existingClap.id))
+        }
     }
 
     const openDeleteModal = e => {
@@ -36,7 +57,7 @@ function ArticleOptions({articleId, navigate}) {
         dispatch(setModal("delete"));
     }
 
-    return (
+    if (currentUser && article.authorId === currentUser.id) return (
         <div style={{position: 'relative'}} onBlur={handleBlur} tabIndex={0}>
             <IoEllipsisHorizontal onClick={handleToggle} />
             {dropdown && 
@@ -47,6 +68,24 @@ function ArticleOptions({articleId, navigate}) {
             }
         </div>
     )
+
+    return (
+        <div style={{position: 'relative'}} onBlur={handleBlur} tabIndex={0}>
+            <IoEllipsisHorizontal onClick={handleToggle} />
+            {dropdown && 
+            <div id="article-options-dropdown" ref={inputRef}>
+                {existingClap ?
+                    <span id="undo-claps" onClick={handleClapDelete}>Undo claps</span>
+                    :
+                    null
+                }
+                <span id="follow-author" className={existingClap ? null : "no-border-top"}>Follow author</span>
+            </div>
+            }
+        </div>
+
+    )
+
 }
 
 export default ArticleOptions;

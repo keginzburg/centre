@@ -1,4 +1,4 @@
-import { RECEIVE_CLAP } from "./clap";
+import { RECEIVE_CLAP, REMOVE_CLAP } from "./clap";
 import csrfFetch from "./csrf";
 
 export const RECEIVE_ARTICLES = "articles/RECEIVE_ARTICLES";
@@ -114,6 +114,9 @@ const articlesReducer = (state = initialState, action) => {
             delete nextState[action.payload.article.id];
             return nextState;
         case RECEIVE_CLAP:
+            nextState[action.payload.article.id] = action.payload.article;
+            return nextState;
+        case REMOVE_CLAP:
             nextState[action.payload.article.id] = action.payload.article;
             return nextState;
         default:

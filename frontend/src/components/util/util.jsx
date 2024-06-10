@@ -49,3 +49,12 @@ export const totalClapAmount = (article, claps) => {
 export const filterClappers = (article, claps, users) => {
     return article.clapIds.map(clapId => users[claps[clapId].clapperId]);
 }
+
+export const copyCurrentUrl = e => {
+    e.preventDefault();
+
+    const currentUrl = window.location.href;
+    navigator.clipboard.writeText(currentUrl)
+        .then(() => console.log("URL copied to clipboard"))
+        .catch((err) => console.error('Failed to copy current URL: ', err))
+};

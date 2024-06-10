@@ -4,25 +4,36 @@ import { PiHandsClappingFill } from "react-icons/pi";
 import confetti from './confetti-62.png';
 
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { createClap, updateClap } from "../../../store/clap";
 
-
 import "./ClapButton.css";
+import { setModal } from "../../../store/ui";
 
 const ClapButton = ({owned, existingClap, articleId}) => {
     const dispatch = useDispatch();
 
+    const currentUser = useSelector(state => state.session.user);
+
+    const clapError = useSelector(state => state.error.clap);
+
     const [ownedTip, setOwnedTip] = useState(false);
     const [clapTip, setClapTip] = useState(false);
     const [clapClicked, setClapClicked] = useState(false);
+    const [randomDegree, setRandomDegree] = useState(0);
 
     const ownedToolTip = () => setOwnedTip(prev => !prev);
     const clapToolTip = () => setClapTip(prev => !prev);
 
     const handleClap = () => {
+        if (!currentUser) {
+            dispatch(setModal("signup"));
+            return;
+        }
+
         if (clapClicked) return;
+
         setClapClicked(true);
 
         if (existingClap) {
@@ -51,8 +62,8 @@ const ClapButton = ({owned, existingClap, articleId}) => {
             {clapTip && !clapClicked && <p id="clap-tip">Clap</p>}
             <div id="clap-icon">
                 {clapClicked && <p id="clap-tip-count">+{existingClap && existingClap.amount}</p>}
-                {clapClicked && <img src={confetti} id="confetti-effect" alt="confetti-effect"/>}
-                {existingClap ? <PiHandsClappingFill id="clap-icon-svg" /> : <PiHandsClappingThin id="clap-icon-svg" />}
+                {clapClicked && <img src={confetti} id="confetti-effect" alt="confetti-effect" />}
+                {existingClap ? <PiHandsClappingFill id="clap-icon-svg" className={clapError ? 'clap-error' : null}/> : <PiHandsClappingThin id="clap-icon-svg"className={clapError ? 'clap-error' : null}/>}
             </div>
         </div>
     )

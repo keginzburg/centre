@@ -27,17 +27,27 @@
     cursor: pointer;
 }
 
+#article-options-dropdown span#follow-author {
+    color: #6B6B6B;
+}
+#article-options-dropdown span#follow-author:hover {
+    color: #242424;
+}
+
 #article-options-dropdown span:first-child {
     padding: 8px 20px 16px;
 }
 
 #article-options-dropdown span:last-child {
     padding: 16px 20px 8px;
-
     color: #C94A4A;
     border-top: 1px solid #F2F2F2;
 }
 
 #article-options-dropdown span:hover {
     color: #242424;
+}
+
+#article-options-dropdown span#follow-author.no-border-top {
+    border-top: none;
 }

@@ -162,7 +162,6 @@ function ArticleEditForm() {
     const handlePhotoDelete = e => {
         document.addEventListener('keydown', e => {
             if (e.keyCode == 8) {
-                // document.getElementById("article-photo-upload").value = "";
                 setPhotoFile(null);
                 setPhotoUrl(null);
             }        })

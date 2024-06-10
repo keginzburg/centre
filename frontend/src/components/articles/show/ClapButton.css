@@ -205,6 +205,10 @@
     border-bottom-right-radius: 99em;
 }
 
+#clap-icon-svg.clap-error {
+    color: red;
+}
+
 #confetti-effect {
     width:40px;
     height: 40px;
@@ -227,7 +231,8 @@
 #clap-button #clap-icon .already-clapped {
     /* color: black; */
     /* filter:invert(100); */
-    fill-opacity: calc(100);
+    fill-opacity: calc();
     /* border-radius: 110em; */
     /* background-color: black; */
 }
+

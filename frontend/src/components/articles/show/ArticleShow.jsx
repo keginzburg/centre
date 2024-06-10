@@ -9,6 +9,7 @@ import Modal from "../../modal/Modal";
 import LoginForm from "../../session/LoginForm";
 import SignupForm from "../../session/SignupForm";
 import ArticleClap from "./ArticleClap";
+import ShareButton from "./ShareButton";
 import ArticleDelete from "./ArticleDelete";
 import FeedNav from "../../feed/FeedNav";
 import ArticleOptions from "./ArticleOptions";
@@ -16,7 +17,6 @@ import ArticleFooter from "./ArticleFooter";
 
 import { PulseLoader } from "react-spinners";
 import { GoComment } from "react-icons/go";
-import { GoShare } from "react-icons/go";
 
 import './ArticleShow.css';
 
@@ -28,7 +28,7 @@ function ArticleShow() {
     const author = useSelector(state => article ? state.entities.users[article.authorId] : undefined);
 
     const modal = useSelector(state => state.ui.modal);
-    const currentUser = useSelector(state => state.session.user);
+    // const currentUser = useSelector(state => state.session.user);
 
     const navigate = useNavigate();
 
@@ -103,8 +103,10 @@ function ArticleShow() {
                         <GoComment />
                     </div>
                     <div id="share-and-options">
-                        <GoShare />
-                        {currentUser && article.authorId === currentUser.id ? <ArticleOptions articleId={articleId} navigate={navigate} /> : null}
+                        <ShareButton />
+
+                        {/* {currentUser && article.authorId === currentUser.id ? */}
+                        <ArticleOptions article={article} navigate={navigate} />
                     </div>
                 </div>
                 <div id="article-show-content">
