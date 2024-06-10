@@ -122,7 +122,7 @@ function ArticleForm() {
     }
 
     // handler for photo preview HTML element to remove photo data, url, and photo file from file <input> element on a `Backspace` key detection.
-    const handlePhotoDelete = e => {
+    const handlePhotoDelete = () => {
         document.addEventListener('keydown', e => {
             if (e.keyCode == 8) {
                 document.getElementById("article-photo-upload").value = "";

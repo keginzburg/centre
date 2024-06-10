@@ -21,7 +21,6 @@ const ClapButton = ({owned, existingClap, articleId}) => {
     const [ownedTip, setOwnedTip] = useState(false);
     const [clapTip, setClapTip] = useState(false);
     const [clapClicked, setClapClicked] = useState(false);
-    const [randomDegree, setRandomDegree] = useState(0);
 
     const ownedToolTip = () => setOwnedTip(prev => !prev);
     const clapToolTip = () => setClapTip(prev => !prev);
@@ -56,7 +55,6 @@ const ClapButton = ({owned, existingClap, articleId}) => {
         </div>
     )
 
-    // debugger
     return (
         <div id="clap-button" onMouseEnter={clapToolTip} onMouseLeave={clapToolTip} onClick={handleClap}>
             {clapTip && !clapClicked && <p id="clap-tip">Clap</p>}

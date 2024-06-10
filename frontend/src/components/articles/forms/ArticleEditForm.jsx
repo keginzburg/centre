@@ -52,12 +52,12 @@ function ArticleEditForm() {
                     
                 })
                 .catch(async (err) => {
-                    let data;
-                    try {
-                        data = await err.clone().json();
-                    } catch {
-                        data = await err.text();
-                    }
+                    // let data;
+                    // try {
+                    //     data = await err.clone().json();
+                    // } catch {
+                    //     data = await err.text();
+                    // }
                     if (err.status === 404) navigate("/not-found?error=404");
                 })
         }
@@ -159,7 +159,7 @@ function ArticleEditForm() {
             });
     }
 
-    const handlePhotoDelete = e => {
+    const handlePhotoDelete = () => {
         document.addEventListener('keydown', e => {
             if (e.keyCode == 8) {
                 setPhotoFile(null);

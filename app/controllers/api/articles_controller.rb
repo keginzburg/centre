@@ -5,7 +5,6 @@ class Api::ArticlesController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index
-        # debugger
         if params["limit"]
             limit = params["limit"]
             @articles = Article.includes(:author).all.order('updated_at DESC').limit(limit)

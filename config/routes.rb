@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :claps, only: [:create, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
   end
+
+  get '*path', to: "static_pages#frontend_index"
 end

@@ -4,7 +4,7 @@ import FeedNav from "../feed/FeedNav";
 import ErrorMessage from "./ErrorMessage";
 
 function Error() {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     return (
         <>
             <FeedNav />

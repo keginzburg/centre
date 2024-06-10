@@ -20,14 +20,12 @@ export const removeClap = payload => {
 };
 
 export const createClap = ({clappableType, clappableId, amount}) => async dispatch => {
-    // debugger
     try {
         const response = await csrfFetch("/api/claps", {
             method: "POST",
             body: JSON.stringify({clap: { clappableType, clappableId, amount }})
-        });;
+        });
         const data = await response.json();
-        // debugger
         dispatch(receiveClap(data));
     } catch (err) {
         const data = await err.json();
@@ -37,13 +35,11 @@ export const createClap = ({clappableType, clappableId, amount}) => async dispat
 }
 
 export const updateClap = (clapId) => async dispatch => {
-    // debugger
     try {
         const response = await csrfFetch(`/api/claps/${clapId}`, {
             method: "PATCH"
         });
         const data = await response.json();
-        // debugger
         dispatch(receiveClap(data));
     } catch (err) {
         const data = await err.json();

@@ -5,8 +5,6 @@ export const RECEIVE_ARTICLES = "articles/RECEIVE_ARTICLES";
 export const RECEIVE_ARTICLE = "articles/RECEIVE_ARTICLE";
 export const REMOVE_ARTICLE = "articles/REMOVE_ARTICLE";
 
-import { REMOVE_CURRENT_USER } from "./session";
-
 export const receiveArticles = payload => {
     return {
         type: RECEIVE_ARTICLES,
@@ -71,7 +69,6 @@ export const postArticle = formData => async dispatch => {
 }
 
 export const patchArticle = formData => async dispatch => {
-    // debugger
     try {
         const response = await csrfFetch(`/api/articles/${formData.get('article[id]')}`, {
             method: 'PATCH',
