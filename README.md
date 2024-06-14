@@ -20,7 +20,7 @@ Centre is a clone of the Medium website at the time of creation. Medium is an on
 
 A Centre user is able to create new articles, which persist to both the front and backend. This includes a title, body, and optional photo as well. After creating an article, its author can then revisit it and provide relevant edits if necessary.
 
-![gif of article](app/public/images/article-demo.gif)
+![gif of article](https://raw.githubusercontent.com/keginzburg/centre/main/public/images/article-demo.gif?token=GHSAT0AAAAAACLVQY4HYKSREGTML6HVSXJKZTMWMFQ)
 
 ```jsx
     return (
@@ -76,7 +76,7 @@ A Centre user is able to create new articles, which persist to both the front an
 
 A Centre user can also browse a full library of published articles and from there, visit a specific article or its author's profile.
 
-![gif of article library](app/public/article-index.gif)
+![gif of article library](https://github.com/keginzburg/centre/blob/main/public/images/article-index.gif)
 
 ```js
 function ArticleIndex({currentUser}) {
@@ -144,7 +144,7 @@ function ArticleIndex({currentUser}) {
 
 If a Centre user desires, they can applaud specific articles (thereby creating a "clap") to show their appreciation to its author. Claps are a full CRUD resource, so if a user wants to boost their applause, they can actively click the clap button to add more claps to the applause between them and that specific article. However, a user can always reverse their applause and undo any claps they have created for an article as well.
 
-![gif of clap](app/public/images/clap.gif)
+![gif of clap](https://raw.githubusercontent.com/keginzburg/centre/main/public/images/clap.gif?token=GHSAT0AAAAAACLVQY4GNOOKLFKWHYP4MGJCZTMWKZQ)
 
 ```js
 const ClapButton = ({owned, existingClap, articleId}) => {
@@ -208,13 +208,13 @@ export default ClapButton;
 
 In addition to creating, updating, or deleting claps, Centre users can also view which users have already added applause to an article. The amount of each user's applause is private, but the total number of claps for each article is not. This total number of claps will affect an article's standing in popularity within the Splash page's Trending section.
 
-![gif of claps](app/public/images/claps.gif)
+![gif of claps](https://raw.githubusercontent.com/keginzburg/centre/main/public/images/claps.gif?token=GHSAT0AAAAAACLVQY4GBPOGFORQA357R35WZTMWKXQ)
 
 ## Follows
 
 If a Centre user finds another user whose content they appreciate, they can also follow that user. With this in mind, a user can accrue a following if other users follow them. Follows will affect what content a user sees if they visit the "Following" category in the main article library. After following another author, a user can always choose to unfollow them as well.
 
-![gif of follow](app/public/images/follow.gif)
+![gif of follow](https://raw.githubusercontent.com/keginzburg/centre/main/public/images/follow.gif?token=GHSAT0AAAAAACLVQY4G6YGTICRTQJLCX6R6ZTMWKVQ)
 
 ```js
 const ClapperFollowButton = ({currentUser, author}) => {
@@ -276,7 +276,7 @@ const ClapperFollowButton = ({currentUser, author}) => {
 
 After sign up, every Centre user is provided a unique Profile page as well. A user's profile will be curated to their articles, a list of their followers, and a list of the authors they are following.
 
-![gif of profile](app/public/images/profile.gif)
+![gif of profile](https://raw.githubusercontent.com/keginzburg/centre/main/public/images/profile.gif?token=GHSAT0AAAAAACLVQY4H23V5R2ON5563FNPQZTMWKTA)
 
 ```js
 const ProfileShow = () => {
