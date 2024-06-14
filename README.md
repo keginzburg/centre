@@ -4,7 +4,7 @@ Check out the [Live Site](https://centre-6754f0a99764.herokuapp.com/)!
 
 ### Introduction
 
-![photo of splash](./app/public/images/splash.png)
+![photo of splash](https://raw.githubusercontent.com/keginzburg/centre/main/public/images/splash.png?token=GHSAT0AAAAAACLVQY4G7IFKQ5UMYNOUDW4QZTMWKPA)
 
 Centre is a clone of the Medium website at the time of creation. Medium is an online publishing platform that offers users a library of amateur and professional publications. After signing up, a Medium user can manage their own unique articles. They can also view and applaud other users' articles and follow other users if their content is relevant and of the current user's interest. Medium also curates articles based on popularity and a user's following. As a huge movie fan and amateur movie reviewer, I was interested in building out a publishing platform like Medium's, as anyone can use it and it offers a sleek, user-friendly design. The technologies implemented in this project include:
 
