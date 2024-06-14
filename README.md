@@ -361,3 +361,7 @@ As of now, Centre boasts four main features (Articles, Claps, Follows, Profile),
 ### Thanks
 
 Thank you for your time and consideration! I hope you enjoy Centre!
+
+### Attributions
+
++ Medium favicon created by [Freepik](https://www.flaticon.com/authors/freepik) - Flaticon
