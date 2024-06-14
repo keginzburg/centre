@@ -63,7 +63,7 @@ function ArticleIndex({currentUser}) {
                 {articlesList}
                 <div id="caught-up-container">
                     <IoMdCheckmarkCircleOutline id="caught-up-icon"/>
-                    <p>You're all caught up!</p>
+                    <p>You&apos;re all caught up!</p>
                 </div>
             </div>
 

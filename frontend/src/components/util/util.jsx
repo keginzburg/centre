@@ -1,5 +1,3 @@
-import { ClipLoader } from "react-spinners";
-
 export function obscureEmail(email) {
     const [local, domain] = email.split("@");
     return local.slice(0,2) + "•••••••@" + domain;

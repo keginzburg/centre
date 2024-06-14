@@ -8,7 +8,6 @@ import { setModal } from "../../store/ui";
 import ProfileButton from "../profile/ProfileButton";
 
 import { PiNotePencilThin } from "react-icons/pi";
-import { CiBellOn } from "react-icons/ci";
 
 import './FeedNav.css';
 

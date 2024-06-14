@@ -14,6 +14,8 @@ function ArticleOptions({article, navigate, author}) {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
     const claps = useSelector(state => state.entities.claps);
+    const inputRef = useRef(null);
+    const [dropdown, setDropdown] = useState(false);
 
     if (!currentUser) return null;
 
@@ -22,9 +24,7 @@ function ArticleOptions({article, navigate, author}) {
         existingClap = Object.values(claps).find(clap => clap.clapperId === currentUser.id && clap.clappableId === article.id && clap.clappableType === "Article");
     }
 
-    const inputRef = useRef(null);
 
-    const [dropdown, setDropdown] = useState(false);
 
     const handleToggle = e => {
         e.stopPropagation();
