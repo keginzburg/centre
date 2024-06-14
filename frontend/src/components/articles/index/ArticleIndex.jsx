@@ -44,7 +44,6 @@ function ArticleIndex({currentUser}) {
         });
     }
 
-
     return (
         <div id="article-index-container">
             <div id="topics-slider">
@@ -66,7 +65,6 @@ function ArticleIndex({currentUser}) {
                     <p>You&apos;re all caught up!</p>
                 </div>
             </div>
-
         </div>
     )
 }
