@@ -16,5 +16,5 @@ end
 
 json.clapper do
     json.extract! @clap.clapper, :id, :email, :name
-    json.photoUrl @clap.clapper.photo.attached? ? @clap.clapper.photo.url : nil
+    json.photoUrl @clap.clapper.photo.attached? ? @clap.clapper.photo.url : "https://centre-seeds.s3.amazonaws.com/users/demo.png"
 end

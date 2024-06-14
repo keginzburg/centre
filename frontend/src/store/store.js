@@ -7,11 +7,13 @@ import errorReducer from './error';
 import usersReducer from './user';
 import articlesReducer from './articles';
 import clapReducer from './clap';
+import followReducer from './follow';
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
     articles: articlesReducer,
-    claps: clapReducer
+    claps: clapReducer,
+    follows: followReducer
 });
 
 const rootReducer = combineReducers({

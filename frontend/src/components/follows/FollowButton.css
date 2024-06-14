@@ -1,0 +1,7 @@
+#article-show-user-info span#following-btn {
+    color: #6B6B6B;
+}
+
+#article-show-user-info span.error {
+    color: red;
+}

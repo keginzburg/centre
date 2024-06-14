@@ -43,7 +43,7 @@ function TrendingIndex() {
                 Trending on Centre
             </div>
             <div id="trending-index">
-                {articles && Object.values(articles).map((article, idx) => {
+                {articles && Object.values(articles).slice(0,6).map((article, idx) => {
                     return <TrendingIndexItem key={idx} article={article} author={users[article.authorId]} num={idx+1}/>;
                 })}
             </div>

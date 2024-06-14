@@ -1,0 +1,18 @@
+#profile-main {
+        /* max-width: 1336px; */
+        /* margin: auto; */
+        padding: 50px 6vw 30px 12vw;
+        max-width: 728px;
+        width: 728px;
+}
+
+#profile-header {
+    font-size: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+#profile-articles-index {
+    padding: 50px 0;
+}

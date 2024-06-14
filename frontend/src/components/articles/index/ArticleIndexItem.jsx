@@ -14,7 +14,7 @@ function ArticleIndexItem({article, author}) {
                 <img src={author.photoUrl ? author.photoUrl : profile} alt="profile-thumbnail" />
                 <span>{author.name}</span>
                 <span>·</span>
-                <span>{article.updatedAt}</span>
+                <span>{article.createdAt}</span>
             </Link>
             <Link to={`/articles/${article.id}`} id="article-index-item-link">
                 <div id="article-index-item-details">

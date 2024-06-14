@@ -1,0 +1,79 @@
+#follow-suggest-index-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+#suggest-details {
+    display: flex;
+    padding: 12px 0;
+}
+
+#suggest-details img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 99em;
+    border: 1px solid #F2F2F2;
+
+    margin-right: 12px;
+}
+
+#suggest-details a {
+    text-decoration: none;
+}
+
+#suggest-details h2 {
+    line-height: 20px;
+    letter-spacing: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #242424;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+
+    margin-top: 4px;
+    margin-right: 24px;
+}
+
+#follow-suggest-index-item #clapper-follow {
+    border-radius: 99em;
+    border: 1px solid #242424;
+    background-color: white;
+    color: #242424;
+
+    height: fit-content;
+
+    padding: 5px 12px;
+    margin-top: 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+
+    cursor: pointer;
+}
+#follow-suggest-index-item #clapper-followed {
+    border-radius: 99em;
+    border: 1px solid #242424;
+    background-color: #242424;
+    color: white;
+
+    height: fit-content;
+
+    padding: 5px 12px;
+    margin-top: 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+
+    cursor: pointer;
+}
+
+#follow-suggest-index-item #clapper-follow.error, #follow-suggest-index-item #clapper-followed.error {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}

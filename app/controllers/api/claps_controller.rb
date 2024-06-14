@@ -6,7 +6,6 @@ class Api::ClapsController < ApplicationController
         @clap.clapper = current_user
 
         if @clap.save
-            # @clap.include(:clapper, :clappable)
             render 'api/claps/show'
         else
             render json: { errors: @clap.errors.full_messages }, status: :unprocessable_entity
@@ -39,7 +38,7 @@ class Api::ClapsController < ApplicationController
         end
 
         if @clap.clapper != current_user
-            render json: { errors: "You are not the owner of this applause and do not have the necessary permissions to add to it." }, status: 403
+            render json: { errors: "You are not the owner of this applause and do not have the necessary permissions to destroy to it." }, status: 403
         else
             if @clap.destroy
                 render 'api/claps/show'

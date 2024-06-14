@@ -38,7 +38,8 @@ export const autoGrow = e => {
 
 export const totalClapAmount = (article, claps) => {
     const div = <div id="clap-placeholder-div"/>;
-    if (!article.clapIds || !claps) return <ClipLoader margin={4} size={5}/>
+    // if (!article.clapIds || !claps) return <ClipLoader margin={4} size={5}/>
+    if (!article.clapIds || !claps) return "--";
     if (article.clapIds.length === 0) return div;
     if (Object.values(claps).length === 0) return div;
     const arrayOfClapAmounts = article.clapIds.map(clapId => claps[clapId].amount);
