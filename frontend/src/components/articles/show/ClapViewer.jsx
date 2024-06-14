@@ -4,11 +4,14 @@ import "./ClapViewer.css";
 
 import { filterClappers } from "../../util/util";
 
+import ClapperFollowButton from "../../follows/ClapperFollowButton";
+
 import { Link } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 
 const ClapViewer = ({article, clapCount, claps}) => {
     const users = useSelector(state => state.entities.users ? state.entities.users : undefined);
+    const currentUser = useSelector(state => state.session.user ? state.session.user : undefined);
 
     const clappers = filterClappers(article, claps, users);
 
@@ -51,11 +54,11 @@ const ClapViewer = ({article, clapCount, claps}) => {
                     <li key={idx} id="clapper-container">
                         <div id="clapper-details">
                             <img src={clapper.photoUrl} alt="clapper-image"/>
-                            <Link>
+                            <Link to={`/users/${clapper.id}`}>
                                 <h2>{clapper.name}</h2>
                             </Link>
                         </div>
-                        <button id="clapper-follow">Follow</button>
+                        <ClapperFollowButton currentUser={currentUser} author={clapper} />
                     </li>
                     )
                 })}

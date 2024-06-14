@@ -1,0 +1,52 @@
+#profile-followers {
+    padding: 50px 6vw 30px 12vw;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    max-width: 728px;
+    width: 728px;
+}
+
+#profile-followers > p > span {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    color: #6B6B6B;
+}
+#profile-followers > p > span:hover {
+    color: #242424;
+}
+
+#profile-followers > p {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #242424;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#profile-followers #profile-caret {
+    height: 14px;
+    width: auto;
+    margin: 0 4px;
+}
+
+#profile-followers > h1 {
+
+    margin-top: 12px;
+    font-size: 42px;
+    line-height: 52px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: -0.011em;
+    font-weight: 600;
+    color: #242424;
+}
+
+#profile-followers-index {
+    border-top: 1px solid #F2F2F2;
+    padding-top: 40px;
+    margin-top: 60px;
+}

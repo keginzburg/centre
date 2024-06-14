@@ -25,6 +25,28 @@ class User < ApplicationRecord
         foreign_key: :clapper_id,
         class_name: :Clap
 
+    # The follows where you are the user following another user:
+    has_many :follows,
+        primary_key: :id,
+        foreign_key: :follower_id,
+        class_name: :Follow
+
+    # The follows where you are the user being followed:
+    has_many :leads,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Follow
+
+    # The users who are following your content:
+    has_many :followers,
+        through: :leads,
+        source: :follower
+
+    # The users whose content you are following:
+    has_many :following,
+        through: :follows,
+        source: :leader
+
     has_one_attached :photo
 
     # Auth Pattern

@@ -1,3 +1,5 @@
+import profile from "./profile-icon.png";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -8,6 +10,7 @@ import { abbreviateDate } from "../../util/util";
 import Modal from "../../modal/Modal";
 import LoginForm from "../../session/LoginForm";
 import SignupForm from "../../session/SignupForm";
+import FollowButton from "../../follows/FollowButton";
 import ArticleClap from "./ArticleClap";
 import ShareButton from "./ShareButton";
 import ArticleDelete from "./ArticleDelete";
@@ -28,7 +31,7 @@ function ArticleShow() {
     const author = useSelector(state => article ? state.entities.users[article.authorId] : undefined);
 
     const modal = useSelector(state => state.ui.modal);
-    // const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.user);
 
     const navigate = useNavigate();
 
@@ -82,12 +85,12 @@ function ArticleShow() {
             <div id="article-show-container">
                 <h1>{article.title}</h1>
                 <div id="article-show-details">
-                    <Link><img src={author.photoUrl} alt="author-thumbnail" /></Link>
+                    <Link to={`/users/${author.id}`}><img src={author.photoUrl ? author.photoUrl : profile} alt="author-thumbnail" /></Link>
                     <div id="article-show-addl">
                         <div id="article-show-user-info">
-                            <span><Link>{author.name}</Link></span>
-                            <span>·</span>
-                            <span>Follow</span>
+                            <span><Link to={`/users/${author.id}`}>{author.name}</Link></span>
+                            
+                            <FollowButton currentUser={currentUser} author={author}/>
                         </div>
                         <div id="article-show-article-info">
                             <span>{article.minRead} min read</span>
@@ -106,7 +109,11 @@ function ArticleShow() {
                         <ShareButton />
 
                         {/* {currentUser && article.authorId === currentUser.id ? */}
-                        <ArticleOptions article={article} navigate={navigate} />
+                        <ArticleOptions
+                            article={article}
+                            navigate={navigate}
+                            author={author}
+                        />
                     </div>
                 </div>
                 <div id="article-show-content">

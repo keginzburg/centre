@@ -1,0 +1,83 @@
+#profile-articles-index-item {
+    text-decoration: none;
+    border-bottom: 1px solid #F2F2F2;
+    padding: 20px 0;
+    max-width: 300px;
+}
+
+#profile-articles-index-item-author {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 32px;
+}
+#profile-articles-index-item-author img {
+    width: 20px;
+    height: 20px;
+    border-radius: 99em;
+}
+#profile-articles-index-item-author p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    padding-left: 8px;
+    padding-right: 4px;
+    color: black;
+}
+
+#profile-articles-index-item-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+
+    padding-bottom: 32px;
+    border-bottom: 1px solid #F2F2F2;
+    /* cursor: pointer; */
+}
+#profile-articles-index-item-title-body {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: ; */
+    align-items: start;
+    width: 464px;
+    max-width: 464px;
+}
+
+#profile-article-title {
+    letter-spacing: -0.016em;
+    line-height: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+#profile-article-body {
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #6B6B6B;
+    overflow: hidden;
+    padding-top: 8px;
+}
+
+#time-and-date {
+    line-height: 20px;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #6B6B6B;
+    padding-top: 20px;
+}
+
+#profile-articles-index-item-photo img {
+    width: 160px;
+    height: 107px;
+    aspect-ratio: auto 160/107;
+    margin-left: 56px;
+    object-fit: contain;
+}

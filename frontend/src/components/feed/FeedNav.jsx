@@ -24,14 +24,14 @@ function FeedNav() {
                         <PiNotePencilThin id="write-icon" />
                         <span>Write</span>
                     </Link>
-                    <Link to="/feed" id="notifications"><CiBellOn id="notifications-icon" /></Link>
+                    {/* <Link to="/feed" id="notifications"><CiBellOn id="notifications-icon" /></Link> */}
                     <ProfileButton />
                 </>
             )
         } else {
             return (
                 <>
-                    <Link id="write" onClick={() => dispatch(setModal('get-started'))}>
+                    <Link id="write" onClick={() => dispatch(setModal('signup'))}>
                         <PiNotePencilThin id="write-icon" />
                         <span>Write</span>
                     </Link>

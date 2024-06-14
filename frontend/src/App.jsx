@@ -7,6 +7,7 @@ import Feed from "./components/feed/Feed";
 import ArticleForm from "./components/articles/forms/ArticleForm";
 import ArticleEditForm from "./components/articles/forms/ArticleEditForm";
 import ArticleShow from "./components/articles/show/ArticleShow";
+import ProfileShow from "./components/profile/ProfileShow";
 import Error from "./components/error/Error";
 
 function Layout() {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/articles/:articleId/edit',
         element: <ArticleEditForm />
+      },
+      {
+        path: '/users/:userId',
+        element: <ProfileShow />
       },
       {
         path: '/error',

@@ -7,6 +7,7 @@ import { convertEmailToLocal, obscureEmail } from "../util/util";
 
 import { PiUserCircleDuotone } from "react-icons/pi";
 import { FiUser } from "react-icons/fi";
+import profile from "./profile-icon.png";
 
 import './ProfileButton.css';
 
@@ -40,13 +41,13 @@ function ProfileButton() {
     if (pathname === '/new-story') return (
         <>
             <div id="profile" onClick={openMenu} >
-                {currentUser ? <img src={currentUser.photoUrl} id="profile-photo" alt="profile pic" /> : <PiUserCircleDuotone id="profile-nav-icon" />}
+                {currentUser ? <img src={currentUser.photoUrl ? currentUser.photoUrl : profile} id="profile-photo" alt="profile pic" /> : <PiUserCircleDuotone id="profile-nav-icon" />}
                 {showMenu && (
                     <>
                     <div id="dropdown-menu-pointer" />
                     <div id="dropdown-menu-alternate">
                         <div id="dropdown-user-info">
-                            <Link id="user-info" to="/profile">
+                            <Link to={`/users/${currentUser.id}`} id="user-info">
                                 {currentUser ? <img src={currentUser.photoUrl} id="profile-photo-icon" alt="profile pic" /> : <PiUserCircleDuotone id="profile-nav-icon" />}
                                 <div id="user-info-details">
                                     <span>{currentUser.name}</span>
@@ -55,7 +56,7 @@ function ProfileButton() {
                             </Link>
                         </div>
                         <div id="dropdown-nav-links">
-                            <Link id="profile" to="/profile">
+                            <Link to={`/users/${currentUser.id}`} id="profile">
                                 <span id="no-icon">Profile</span>
                             </Link>
                         </div>
@@ -79,11 +80,11 @@ function ProfileButton() {
     return (
         <>
             <div id="profile" onClick={openMenu}>
-                {currentUser ? <img src={currentUser.photoUrl} id="profile-photo" alt="profile pic" /> : <PiUserCircleDuotone id="profile-nav-icon" />}
+                {currentUser ? <img src={currentUser.photoUrl ? currentUser.photoUrl : profile} id="profile-photo" alt="profile pic" /> : <PiUserCircleDuotone id="profile-nav-icon" />}
                 {showMenu && (
                     <div id="dropdown-menu">
                         <div id="dropdown-nav-links">
-                            <Link id="profile" to="/profile">
+                            <Link to={`/users/${currentUser.id}`} id="profile">
                                 <FiUser id="profile-icon"/>
                                 <span>Profile</span>
                             </Link>

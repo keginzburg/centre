@@ -10,7 +10,7 @@ end
 
 json.author do
     json.extract! @article.author, :id, :email, :name, :created_at, :updated_at
-    json.photoUrl @article.author.photo.attached? ? @article.author.photo.url : nil
+    json.photoUrl @article.author.photo.attached? ? @article.author.photo.url : "https://centre-seeds.s3.amazonaws.com/users/demo.png"
 end
 
 json.claps do
@@ -25,7 +25,7 @@ json.clappers do
     @article.clappers.each do |clapper|
         json.set! clapper.id do
             json.extract! clapper, :id, :email, :name
-            json.photoUrl clapper.photo.attached? ? clapper.photo.url : nil
+            json.photoUrl clapper.photo.attached? ? clapper.photo.url : "https://centre-seeds.s3.amazonaws.com/users/demo.png"
         end
     end
 end

@@ -4,14 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModal } from "../../../store/ui";
 import { deleteClap } from "../../../store/clap";
 
+import OptionsFollowButton from "../../follows/OptionsFollowButton";
+
 import { IoEllipsisHorizontal } from "react-icons/io5";
 
 import './ArticleOptions.css';
 
-function ArticleOptions({article, navigate}) {
+function ArticleOptions({article, navigate, author}) {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
     const claps = useSelector(state => state.entities.claps);
+
+    if (!currentUser) return null;
 
     let existingClap;
     if (currentUser) {
@@ -79,7 +83,12 @@ function ArticleOptions({article, navigate}) {
                     :
                     null
                 }
-                <span id="follow-author" className={existingClap ? null : "no-border-top"}>Follow author</span>
+                <OptionsFollowButton
+                    currentUser={currentUser}
+                    author={author}
+                    existingClap={existingClap}
+                    setDropdown={setDropdown}
+                />
             </div>
             }
         </div>

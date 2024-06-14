@@ -7,9 +7,9 @@ class Api::ArticlesController < ApplicationController
     def index
         if params["limit"]
             limit = params["limit"]
-            @articles = Article.includes(:author).all.order('updated_at DESC').limit(limit)
+            @articles = Article.joins(:claps).group('articles.id').order("SUM(claps.amount) DESC").limit(6).select('articles.id, articles.title, articles.body, articles.user_id, articles.created_at, articles.updated_at')
         else
-            @articles = Article.includes(:author).all
+            @articles = Article.includes(:author).order('created_at DESC').all
             render 'api/articles/index'
         end
     end

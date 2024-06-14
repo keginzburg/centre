@@ -1,12 +1,13 @@
 import csrfFetch, { storeCSRFToken } from "./csrf";
+import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from "./follow";
 
 export const SET_CURRENT_USER = "session/SET_CURRENT_USER";
 export const REMOVE_CURRENT_USER = "session/REMOVE_CURRENT_USER";
 
-export const setCurrentUser = user => {
+export const setCurrentUser = payload => {
     return {
         type: SET_CURRENT_USER,
-        user
+        payload
     };
 }
 
@@ -23,7 +24,7 @@ export const login = ({ email, password}) => async dispatch => {
             body: JSON.stringify({ email, password })
         });
         const data = await response.json();
-        dispatch(setCurrentUser(data.user));
+        dispatch(setCurrentUser(data));
     } catch (err) {
         throw err;
     }
@@ -36,7 +37,7 @@ export const signup = ({ email, name, password}) => async dispatch => {
             body: JSON.stringify({ email, name, password })
         });
         const data = await response.json();
-        dispatch(setCurrentUser(data.user));
+        dispatch(setCurrentUser(data));
     } catch (err) {
         throw err;
     }
@@ -54,7 +55,7 @@ export const restoreSession = () => async dispatch => {
     const response = await csrfFetch("/api/session");
     storeCSRFToken(response);
     const data = await response.json();
-    dispatch(setCurrentUser(data.user));
+    dispatch(setCurrentUser(data));
     return response;
 }
 
@@ -66,11 +67,24 @@ const sessionReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_CURRENT_USER:
-            nextState.user = action.user;
+            if (action.payload.user) {
+                action.payload.user.followingIds = new Set(action.payload.user.followingIds)
+                action.payload.user.followerIds = new Set(action.payload.user.followerIds)
+            }
+            nextState.user = action.payload.user;
             return nextState;
+
         case REMOVE_CURRENT_USER:
             nextState.user = null;
             return nextState;
+
+        case RECEIVE_FOLLOW:
+        case REMOVE_FOLLOW:
+            action.payload.follower.followingIds = new Set(action.payload.follower.followingIds);
+            action.payload.follower.followerIds = new Set(action.payload.follower.followerIds);
+            nextState.user = action.payload.follower;
+            return nextState;
+
         default:
             return state;
     }

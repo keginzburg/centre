@@ -15,6 +15,7 @@ function SplashMain() {
             </div>
             <div id="splash-graphic">
                 {/* GRAPHIC PLACEHOLDER */}
+                {/* <img src={logo} alt="centre-logo" style={{width: 400, height: 400}}/> */}
             </div>
         </div>
     )
