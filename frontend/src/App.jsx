@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import * as sessionActions from "./store/session";
@@ -10,7 +10,14 @@ import ArticleShow from "./components/articles/show/ArticleShow";
 import ProfileShow from "./components/profile/ProfileShow";
 import Error from "./components/error/Error";
 
+import ReactGa from 'react-ga4';
+import { trackPageView } from "./analytics";
+const measurementId = 'G-374LE8WP35';
+ReactGa.initialize(measurementId);
+
+
 function Layout() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -19,6 +26,10 @@ function Layout() {
       setIsLoaded(true);
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
 
   return (
     <>
